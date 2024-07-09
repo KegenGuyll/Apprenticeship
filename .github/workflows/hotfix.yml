@@ -1,0 +1,31 @@
+name: "HOTFIX to Workshop"
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  hotfix:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: sitezen/pr-comment-checker@v1.0.1
+        with:
+          pr_description_should_contain: '`hotfix`'
+          
+      - uses: AnarkisGaming/workshop@v1
+        with:
+          appID: 108600
+          #publishedFileID -- workshop ID
+          publishedFileID: 2909488957
+          #changelog: 'log of changes'
+          path: Contents
+        env:
+          STEAM_ACCOUNT_NAME: ${{ secrets.STEAM_USERNAME }}
+          STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD  }}
