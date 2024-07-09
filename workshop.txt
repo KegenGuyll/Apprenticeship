@@ -1,0 +1,6 @@
+version=1
+id=3285160052
+title=Apprenticeship
+description=gain xp with friends
+tags=Build 41;Balance;Multiplayer
+visibility=friendsOnly
