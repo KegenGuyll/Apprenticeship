@@ -4,8 +4,6 @@ local function  isPerkDisabled(perk)
   local searchString = "disableTeaching" .. perk:getId();
   local perkParent = perk:getParent():getName();
 
-  print('perk parent: ' .. perkParent)
-
   if Apprenticeship.sandboxSettings.disableAllAgilityTeaching then
     if perkParent == "Agility" then
       return true;
