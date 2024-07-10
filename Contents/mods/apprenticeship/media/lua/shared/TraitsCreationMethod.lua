@@ -13,7 +13,8 @@ local function  initTraits()
 
   TraitFactory.setMutualExclusive('professor', 'badTeacher')
   TraitFactory.setMutualExclusive('professor', 'classDismissed')
-  TraitFactory.setMutualExclusive('professor', 'savant')
+
+  TraitFactory.setMutualExclusive('badTeacher', 'classDismissed')
 end
 
 
