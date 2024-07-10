@@ -97,8 +97,11 @@ Sandbox_EN = {
   Sandbox_Apprenticeship_disableAllCraftingTeaching = "Disable All Crafting Teaching",
   Sandbox_Apprenticeship_disableAllCraftingTeaching_tooltip = "(Overrides All Crafting selections) Players won't be able to learn Carpentry, Cooking, Farming, First Aid, Electrical, Metalworking, Mechanics and Tailoring",
 
-  Sandbox_Apprenticeship_disableAllSurvivalTeaching = "Disable All Survival Teaching",
-  Sandbox_Apprenticeship_disableAllSurvivalTeaching_tooltip = "(Overrides All Survival selections) Players won't be able to learn Fishing, Foraging and Trapping",
+  Sandbox_Apprenticeship_disableAllFirearmTeaching = "Disable All Firearm Teaching",
+  Sandbox_Apprenticeship_disableAllFirearmTeaching_tooltip = "(Overrides All Firearm selections) Players won't be able to learn Aiming and Reloading",
+
+  Sandbox_Apprenticeship_disableAllSurvivalistTeaching = "Disable All Survival Teaching",
+  Sandbox_Apprenticeship_disableAllSurvivalistTeaching_tooltip = "(Overrides All Survival selections) Players won't be able to learn Fishing, Foraging and Trapping",
 }
 
 
