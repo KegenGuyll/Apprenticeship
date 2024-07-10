@@ -1,6 +1,6 @@
 UI_EN = {
   UI_trait_savant = "Savant",
-  UI_trait_savantdesc = "You have exceeding interest in one particular skill and can teach it quite well. <br>1/3 XP gained<br> from all learners in any skills boosted from character creation.",
+  UI_trait_savantdesc = "You have exceeding interest in one particular skill and can teach it quite well. <br>1/3 XP gained<br> for all learners in any boosted skill.",
   UI_trait_professor = "Professor",
   UI_trait_professordesc = "You were a teacher in your past life. <br>1/3 XP gained<br> from all learners in all skills.",
   UI_trait_badTeacher = "Bad Teacher",

@@ -9,9 +9,11 @@ local function  initTraits()
 
   TraitFactory.setMutualExclusive('savant', 'badTeacher')
   TraitFactory.setMutualExclusive('savant', 'classDismissed')
+  TraitFactory.setMutualExclusive('savant', 'professor')
 
   TraitFactory.setMutualExclusive('professor', 'badTeacher')
   TraitFactory.setMutualExclusive('professor', 'classDismissed')
+  TraitFactory.setMutualExclusive('professor', 'savant')
 end
 
 

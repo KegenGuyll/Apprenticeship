@@ -68,9 +68,10 @@ local function AddXP(character, perk, level)
   if teacher ~= nil then
 
     if teacher:HasTrait("savant") then
-      print("savant trait found")
-
-      print("perk boost: " .. teacher:getXp():getPerkBoost(perk));
+      if teacher:getXp():getPerkBoost(perk) == 0 then
+        print("Skipping " .. perk:getName() .. " because teacher does not have a perk boost");
+        return;
+      end
     end
 
     if teacher:HasTrait("classDismissed") then
