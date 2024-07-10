@@ -84,6 +84,21 @@ Sandbox_EN = {
 
   Sandbox_Apprenticeship_hideStudentHaloText = "Hide Student Halo Text",
   Sandbox_Apprenticeship_hideStudentHaloText_tooltip = "Hide the text that appears above the head of the student when they are learning a skill",
+
+  Sandbox_Apprenticeship_disableAllPassiveTeaching = "Disable All Passive Teaching",
+  Sandbox_Apprenticeship_disableAllPassiveTeaching_tooltip = "(Overrides All Passive selections) Players won't be able to learn Fitness and Strength",
+
+  Sandbox_Apprenticeship_disableAllAgilityTeaching = "Disable All Agility Teaching",
+  Sandbox_Apprenticeship_disableAllAgilityTeaching_tooltip = "(Overrides All Agility selections) Players won't be able to learn Sprinting, lightfooted, Nimble and Sneaking",
+
+  Sandbox_Apprenticeship_disableAllCombatTeaching = "Disable All Combat Teaching",
+  Sandbox_Apprenticeship_disableAllCombatTeaching_tooltip = "(Overrides All Combat selections) Players won't be able to learn Aiming, Axe, Long Blunt, Short Blunt, Long Blade, Short Blade, Spear and Maintenance",
+
+  Sandbox_Apprenticeship_disableAllCraftingTeaching = "Disable All Crafting Teaching",
+  Sandbox_Apprenticeship_disableAllCraftingTeaching_tooltip = "(Overrides All Crafting selections) Players won't be able to learn Carpentry, Cooking, Farming, First Aid, Electrical, Metalworking, Mechanics and Tailoring",
+
+  Sandbox_Apprenticeship_disableAllSurvivalTeaching = "Disable All Survival Teaching",
+  Sandbox_Apprenticeship_disableAllSurvivalTeaching_tooltip = "(Overrides All Survival selections) Players won't be able to learn Fishing, Foraging and Trapping",
 }
 
 

@@ -26,6 +26,14 @@ option Apprenticeship.hideStudentHaloText
 	translation = Apprenticeship_hideStudentHaloText,
 }
 
+option Apprenticeship.disableAllPassiveTeaching
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableAllPassiveTeaching,
+}
+
 option Apprenticeship.disableTeachingFitness
 {
 	type = boolean,
@@ -40,6 +48,14 @@ option Apprenticeship.disableTeachingStrength
 	default = false,
 	page = Apprenticeship,
 	translation = Apprenticeship_disableTeachingStrength,
+}
+
+option Apprenticeship.disableAllAgilityTeaching
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableAllAgilityTeaching,
 }
 
 option Apprenticeship.disableTeachingSprinting
@@ -72,6 +88,14 @@ option Apprenticeship.disableTeachingSneak
 	default = false,
 	page = Apprenticeship,
 	translation = Apprenticeship_disableTeachingSneak,
+}
+
+option Apprenticeship.disableAllCombatTeaching
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableAllCombatTeaching,
 }
 
 option Apprenticeship.disableTeachingAxe
@@ -120,6 +144,14 @@ option Apprenticeship.disableTeachingMaintenance
 	default = false,
 	page = Apprenticeship,
 	translation = Apprenticeship_disableTeachingMaintenance,
+}
+
+option Apprenticeship.disableAllCraftingTeaching
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableAllCraftingTeaching,
 }
 
 option Apprenticeship.disableTeachingWoodwork
@@ -186,6 +218,14 @@ option Apprenticeship.disableTeachingTailoring
 	translation = Apprenticeship_disableTeachingTailoring,
 }
 
+option Apprenticeship.disableAllFirearmTeaching
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableAllFirearmTeaching,
+}
+
 option Apprenticeship.disableTeachingAiming
 {
 	type = boolean,
@@ -200,6 +240,14 @@ option Apprenticeship.disableTeachingReloading
 	default = false,
 	page = Apprenticeship,
 	translation = Apprenticeship_disableTeachingReloading,
+}
+
+option Apprenticeship.disableAllSurvivalistTeaching
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableAllSurvivalistTeaching,
 }
 
 option Apprenticeship.disableTeachingFishing
