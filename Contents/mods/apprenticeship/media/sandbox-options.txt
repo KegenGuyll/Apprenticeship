@@ -10,13 +10,68 @@ option Apprenticeship.maxDistance
 	translation = Apprenticeship_maxDistance,
 }
 
-
-option Apprenticeship.disableTeachingAiming
+option Apprenticeship.hideTeacherHaloText
 {
 	type = boolean,
 	default = false,
 	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingAiming,
+	translation = Apprenticeship_hideTeacherHaloText,
+}
+
+option Apprenticeship.hideStudentHaloText
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_hideStudentHaloText,
+}
+
+option Apprenticeship.disableTeachingFitness
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingFitness,
+}
+
+option Apprenticeship.disableTeachingStrength
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingStrength,
+}
+
+option Apprenticeship.disableTeachingSprinting
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingSprinting,
+}
+
+option Apprenticeship.disableTeachingLightfoot
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingLightfoot,
+}
+
+option Apprenticeship.disableTeachingNimble
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingNimble,
+}
+
+option Apprenticeship.disableTeachingSneak
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingSneak,
 }
 
 option Apprenticeship.disableTeachingAxe
@@ -27,6 +82,54 @@ option Apprenticeship.disableTeachingAxe
 	translation = Apprenticeship_disableTeachingAxe,
 }
 
+option Apprenticeship.disableTeachingLongBlade
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingLongBlade,
+}
+
+option Apprenticeship.disableTeachingSmallBlunt
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingSmallBlunt,
+}
+
+option Apprenticeship.disableTeachingSmallBlade
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingSmallBlade,
+}
+
+option Apprenticeship.disableTeachingSpear
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingSpear,
+}
+
+option Apprenticeship.disableTeachingMaintenance
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingMaintenance,
+}
+
+option Apprenticeship.disableTeachingWoodwork
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingWoodwork,
+}
+
 option Apprenticeship.disableTeachingCooking 
 {
 	type = boolean,
@@ -35,6 +138,13 @@ option Apprenticeship.disableTeachingCooking
 	translation = Apprenticeship_disableTeachingCooking,
 }
 
+option Apprenticeship.disableTeachingFarming
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingFarming,
+}
 
 option Apprenticeship.disableTeachingDoctor
 {
@@ -52,65 +162,6 @@ option Apprenticeship.disableTeachingElectricity
 	translation = Apprenticeship_disableTeachingElectricity,
 }
 
-option Apprenticeship.disableTeachingFarming
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingFarming,
-}
-
-
-option Apprenticeship.disableTeachingFishing
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingFishing,
-}
-
-option Apprenticeship.disableTeachingFitness
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingFitness,
-}
-
-option Apprenticeship.disableTeachingLightfoot
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingLightfoot,
-}
-
-option Apprenticeship.disableTeachingLongBlade
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingLongBlade,
-}
-
-option Apprenticeship.disableTeachingMaintenance
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingMaintenance,
-}
-
-
-option Apprenticeship.disableTeachingMechanics
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingMechanics,
-}
-
-
 option Apprenticeship.disableTeachingMetalWelding
 {
 	type = boolean,
@@ -119,76 +170,12 @@ option Apprenticeship.disableTeachingMetalWelding
 	translation = Apprenticeship_disableTeachingMetalWelding,
 }
 
-option Apprenticeship.disableTeachingNimble
+option Apprenticeship.disableTeachingMechanics
 {
 	type = boolean,
 	default = false,
 	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingNimble,
-}
-
-option Apprenticeship.disableTeachingPlantScavenging
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingPlantScavenging,
-}
-
-option Apprenticeship.disableTeachingReloading
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingReloading,
-}
-
-option Apprenticeship.disableTeachingSmallBlade
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingSmallBlade,
-}
-
-option Apprenticeship.disableTeachingSmallBlunt
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingSmallBlunt,
-}
-
-option Apprenticeship.disableTeachingSneak
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingSneak,
-}
-
-option Apprenticeship.disableTeachingSpear
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingSpear,
-}
-
-option Apprenticeship.disableTeachingSprinting
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingSprinting,
-}
-
-option Apprenticeship.disableTeachingStrength
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingStrength,
+	translation = Apprenticeship_disableTeachingMechanics,
 }
 
 option Apprenticeship.disableTeachingTailoring
@@ -199,6 +186,29 @@ option Apprenticeship.disableTeachingTailoring
 	translation = Apprenticeship_disableTeachingTailoring,
 }
 
+option Apprenticeship.disableTeachingAiming
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingAiming,
+}
+
+option Apprenticeship.disableTeachingReloading
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingReloading,
+}
+
+option Apprenticeship.disableTeachingFishing
+{
+	type = boolean,
+	default = false,
+	page = Apprenticeship,
+	translation = Apprenticeship_disableTeachingFishing,
+}
 
 option Apprenticeship.disableTeachingTrapping
 {
@@ -208,27 +218,10 @@ option Apprenticeship.disableTeachingTrapping
 	translation = Apprenticeship_disableTeachingTrapping,
 }
 
-
-option Apprenticeship.disableTeachingWoodwork
+option Apprenticeship.disableTeachingPlantScavenging
 {
 	type = boolean,
 	default = false,
 	page = Apprenticeship,
-	translation = Apprenticeship_disableTeachingWoodwork,
-}
-
-option Apprenticeship.hideTeacherHaloText
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_hideTeacherHaloText,
-}
-
-option Apprenticeship.hideStudentHaloText
-{
-	type = boolean,
-	default = false,
-	page = Apprenticeship,
-	translation = Apprenticeship_hideStudentHaloText,
+	translation = Apprenticeship_disableTeachingPlantScavenging,
 }
