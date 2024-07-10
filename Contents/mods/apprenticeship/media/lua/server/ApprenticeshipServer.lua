@@ -34,6 +34,12 @@ Apprenticeship.server.fetchSandboxVars = function ()
   Apprenticeship.sandboxSettings.disableTeachingWoodwork = SandboxVars.Apprenticeship.disableTeachingWoodwork;
   Apprenticeship.sandboxSettings.hideTeacherHaloText = SandboxVars.Apprenticeship.hideTeacherHaloText;
   Apprenticeship.sandboxSettings.hideStudentHaloText = SandboxVars.Apprenticeship.hideStudentHaloText;
+  Apprenticeship.sandboxSettings.disableAllPassiveTeaching = SandboxVars.Apprenticeship.disableAllPassiveTeaching;
+  Apprenticeship.sandboxSettings.disableAllAgilityTeaching = SandboxVars.Apprenticeship.disableAllAgilityTeaching;
+  Apprenticeship.sandboxSettings.disableAllCombatTeaching = SandboxVars.Apprenticeship.disableAllCombatTeaching;
+  Apprenticeship.sandboxSettings.disableAllCraftingTeaching = SandboxVars.Apprenticeship.disableAllCraftingTeaching;
+  Apprenticeship.sandboxSettings.disableAllFirearmTeaching = SandboxVars.Apprenticeship.disableAllFirearmTeaching;
+  Apprenticeship.sandboxSettings.disableAllSurvivalistTeaching = SandboxVars.Apprenticeship.disableAllSurvivalistTeaching;
 end
 
 Apprenticeship.server.setup = function ()

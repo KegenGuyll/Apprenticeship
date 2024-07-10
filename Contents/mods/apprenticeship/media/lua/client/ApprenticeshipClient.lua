@@ -2,8 +2,48 @@ require "ISPlayerStatsUI.lua"
 
 local function  isPerkDisabled(perk)
   local searchString = "disableTeaching" .. perk:getId();
+  local perkParent = perk:getParent():getName();
 
-   return Apprenticeship.sandboxSettings[searchString];
+  print('perk parent: ' .. perkParent)
+
+  if Apprenticeship.sandboxSettings.disableAllAgilityTeaching then
+    if perkParent == "Agility" then
+      return true;
+    end
+  end
+
+  if Apprenticeship.sandboxSettings.disableAllCombatTeaching then
+    if perkParent == "Combat" then
+      return true;
+    end
+  end
+
+  if Apprenticeship.sandboxSettings.disableAllCraftingTeaching then
+    if perkParent == "Crafting" then
+      return true;
+    end
+  end
+
+  if Apprenticeship.sandboxSettings.disableAllFirearmTeaching then
+    if perkParent == "Firearm" then
+      return true;
+    end
+  end
+
+  if Apprenticeship.sandboxSettings.disableAllSurvivalistTeaching then
+    if perkParent == "Survivalist" then
+      return true;
+    end
+  end
+
+  if Apprenticeship.sandboxSettings.disableAllPassiveTeaching then
+    if perkParent == "Passive" then
+      return true;
+    end
+  end
+
+
+  return Apprenticeship.sandboxSettings[searchString];
 end
 
 local function AddXP(character, perk, level)
