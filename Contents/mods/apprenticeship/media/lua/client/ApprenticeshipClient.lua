@@ -97,9 +97,6 @@ local function AddXP(character, perk, level)
 
           if teacher:HasTrait("savant") then
             print("savant trait found")
-
-            print("perk boost: " .. teacher:getXp():getPerkBoost(perk));
-
             args.amount = level / 3;
           end
 
@@ -119,7 +116,6 @@ local function AddXP(character, perk, level)
           if Apprenticeship.sandboxSettings.hideTeacherHaloText == false then
             teacher:setHaloNote("Teaching " .. onlinePlayer:getDisplayName() .. " " .. "(" .. perk:getName() .. ")");
           end
-          
         end
       end  
     end
