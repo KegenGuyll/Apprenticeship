@@ -85,22 +85,22 @@ Sandbox_EN = {
   Sandbox_Apprenticeship_hideStudentHaloText = "Hide Student Halo Text",
   Sandbox_Apprenticeship_hideStudentHaloText_tooltip = "Hide the text that appears above the head of the student when they are learning a skill",
 
-  Sandbox_Apprenticeship_disableAllPassiveTeaching = "Disable All Passive Teaching",
+  Sandbox_Apprenticeship_disableAllPassiveTeaching = "Disable ALL Passive Teaching",
   Sandbox_Apprenticeship_disableAllPassiveTeaching_tooltip = "(Overrides All Passive selections) Players won't be able to learn Fitness and Strength",
 
-  Sandbox_Apprenticeship_disableAllAgilityTeaching = "Disable All Agility Teaching",
+  Sandbox_Apprenticeship_disableAllAgilityTeaching = "Disable ALL Agility Teaching",
   Sandbox_Apprenticeship_disableAllAgilityTeaching_tooltip = "(Overrides All Agility selections) Players won't be able to learn Sprinting, lightfooted, Nimble and Sneaking",
 
-  Sandbox_Apprenticeship_disableAllCombatTeaching = "Disable All Combat Teaching",
+  Sandbox_Apprenticeship_disableAllCombatTeaching = "Disable ALL Combat Teaching",
   Sandbox_Apprenticeship_disableAllCombatTeaching_tooltip = "(Overrides All Combat selections) Players won't be able to learn Aiming, Axe, Long Blunt, Short Blunt, Long Blade, Short Blade, Spear and Maintenance",
 
-  Sandbox_Apprenticeship_disableAllCraftingTeaching = "Disable All Crafting Teaching",
+  Sandbox_Apprenticeship_disableAllCraftingTeaching = "Disable ALL Crafting Teaching",
   Sandbox_Apprenticeship_disableAllCraftingTeaching_tooltip = "(Overrides All Crafting selections) Players won't be able to learn Carpentry, Cooking, Farming, First Aid, Electrical, Metalworking, Mechanics and Tailoring",
 
-  Sandbox_Apprenticeship_disableAllFirearmTeaching = "Disable All Firearm Teaching",
+  Sandbox_Apprenticeship_disableAllFirearmTeaching = "Disable ALL Firearm Teaching",
   Sandbox_Apprenticeship_disableAllFirearmTeaching_tooltip = "(Overrides All Firearm selections) Players won't be able to learn Aiming and Reloading",
 
-  Sandbox_Apprenticeship_disableAllSurvivalistTeaching = "Disable All Survival Teaching",
+  Sandbox_Apprenticeship_disableAllSurvivalistTeaching = "Disable ALL Survival Teaching",
   Sandbox_Apprenticeship_disableAllSurvivalistTeaching_tooltip = "(Overrides All Survival selections) Players won't be able to learn Fishing, Foraging and Trapping",
 }
 
