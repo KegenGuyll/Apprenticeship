@@ -1,0 +1,107 @@
+Sandbox_EN = {
+  Sandbox_Apprenticeship = "Apprenticeship",
+
+  Sandbox_Apprenticeship_maxDistance = "Max Distance",
+  Sandbox_Apprenticeship_maxDistance_tooltip = "Distance away from player to be able to learn",
+
+  Sandbox_Apprenticeship_disableTeachingAiming = "Disable Teaching Aiming skill",
+  Sandbox_Apprenticeship_disableTeachingAiming_tooltip = "Players won't be able to teach Aiming skill",
+
+  Sandbox_Apprenticeship_disableTeachingAxe = "Disable Teaching Axe skill",
+  Sandbox_Apprenticeship_disableTeachingAxe_tooltip = "Players won't be able to teach Axe skill",
+
+  Sandbox_Apprenticeship_disableTeachingCooking = "Disable Teaching Cooking skill",
+  Sandbox_Apprenticeship_disableTeachingCooking_tooltip = "Players won't be able to teach Cooking skill",
+
+  Sandbox_Apprenticeship_disableTeachingDoctor = "Disable Teaching First Aid skill",
+  Sandbox_Apprenticeship_disableTeachingDoctor_tooltip = "Players won't be able to teach First Aid skill",
+
+  Sandbox_Apprenticeship_disableTeachingElectricity = "Disable Teaching Electrical skill",
+  Sandbox_Apprenticeship_disableTeachingElectricity_tooltip = "Players won't be able to teach Electrical skill",
+
+  Sandbox_Apprenticeship_disableTeachingFarming = "Disable Teaching Farming skill",
+  Sandbox_Apprenticeship_disableTeachingFarming_tooltip = "Players won't be able to teach Farming skill",
+
+  Sandbox_Apprenticeship_disableTeachingFishing = "Disable Teaching Fishing skill",
+  Sandbox_Apprenticeship_disableTeachingFishing_tooltip = "Players won't be able to teach Fishing skill",
+
+  Sandbox_Apprenticeship_disableTeachingFitness = "Disable Teaching Fitness skill",
+  Sandbox_Apprenticeship_disableTeachingFitness_tooltip = "Players won't be able to teach Fitness skill",
+
+  Sandbox_Apprenticeship_disableTeachingLightfoot = "Disable Teaching Lightfoot skill",
+  Sandbox_Apprenticeship_disableTeachingLightfoot_tooltip = "Players won't be able to teach Lightfoot skill",
+
+  Sandbox_Apprenticeship_disableTeachingLongBlade = "Disable Teaching Long Blade skill",
+  Sandbox_Apprenticeship_disableTeachingLongBlade_tooltip = "Players won't be able to teach Long Blade skill",
+
+  Sandbox_Apprenticeship_disableTeachingMaintenance = "Disable Teaching Maintenance skill",
+  Sandbox_Apprenticeship_disableTeachingMaintenance_tooltip = "Players won't be able to teach Maintenance skill",  
+
+  Sandbox_Apprenticeship_disableTeachingMechanics = "Disable Teaching Mechanics skill",
+  Sandbox_Apprenticeship_disableTeachingMechanics_tooltip = "Players won't be able to teach Mechanics skill", 
+
+  Sandbox_Apprenticeship_disableTeachingMetalWelding = "Disable Teaching Metalworking skill",
+  Sandbox_Apprenticeship_disableTeachingMetalWelding_tooltip = "Players won't be able to teach Metalworking skill",   
+
+  Sandbox_Apprenticeship_disableTeachingNimble = "Disable Teaching Nimble skill",
+  Sandbox_Apprenticeship_disableTeachingNimble_tooltip = "Players won't be able to teach Nimble skill",   
+
+  Sandbox_Apprenticeship_disableTeachingPlantScavenging = "Disable Teaching Foraging skill",
+  Sandbox_Apprenticeship_disableTeachingPlantScavenging_tooltip = "Players won't be able to teach Foraging skill",   
+
+  Sandbox_Apprenticeship_disableTeachingReloading = "Disable Teaching Reloading skill",
+  Sandbox_Apprenticeship_disableTeachingReloading_tooltip = "Players won't be able to teach Reloading skill",
+
+  Sandbox_Apprenticeship_disableTeachingSmallBlade = "Disable Teaching Short Blade skill",
+  Sandbox_Apprenticeship_disableTeachingSmallBlade_tooltip = "Players won't be able to teach Short Blade skill",    
+
+  Sandbox_Apprenticeship_disableTeachingSmallBlunt = "Disable Teaching Short Blunt skill",
+  Sandbox_Apprenticeship_disableTeachingSmallBlunt_tooltip = "Players won't be able to teach Short Blunt skill",  
+
+  Sandbox_Apprenticeship_disableTeachingSneak = "Disable Teaching Sneak skill",
+  Sandbox_Apprenticeship_disableTeachingSneak_tooltip = "Players won't be able to teach Sneak skill", 
+
+  Sandbox_Apprenticeship_disableTeachingSpear = "Disable Teaching Spear skill",
+  Sandbox_Apprenticeship_disableTeachingSpear_tooltip = "Players won't be able to teach Spear skill",
+
+  Sandbox_Apprenticeship_disableTeachingSprinting = "Disable Teaching Sprinting skill",
+  Sandbox_Apprenticeship_disableTeachingSprinting_tooltip = "Players won't be able to teach Sprinting skill",
+
+  Sandbox_Apprenticeship_disableTeachingStrength = "Disable Teaching Strength skill",
+  Sandbox_Apprenticeship_disableTeachingStrength_tooltip = "Players won't be able to teach Strength skill",
+
+  Sandbox_Apprenticeship_disableTeachingTailoring = "Disable Teaching Tailoring skill",
+  Sandbox_Apprenticeship_disableTeachingTailoring_tooltip = "Players won't be able to teach Tailoring skill",
+
+  Sandbox_Apprenticeship_disableTeachingTrapping = "Disable Teaching Trapping skill",
+  Sandbox_Apprenticeship_disableTeachingTrapping_tooltip = "Players won't be able to teach Trapping skill",
+
+  Sandbox_Apprenticeship_disableTeachingWoodwork = "Disable Teaching Carpentry skill",
+  Sandbox_Apprenticeship_disableTeachingWoodwork_tooltip = "Players won't be able to teach Carpentry skill",
+
+  Sandbox_Apprenticeship_hideTeacherHaloText = "Hide Teacher Halo Text",
+  Sandbox_Apprenticeship_hideTeacherHaloText_tooltip = "Hide the text that appears above the head of the teacher when they are teaching a skill",
+
+  Sandbox_Apprenticeship_hideStudentHaloText = "Hide Student Halo Text",
+  Sandbox_Apprenticeship_hideStudentHaloText_tooltip = "Hide the text that appears above the head of the student when they are learning a skill",
+
+  Sandbox_Apprenticeship_disableAllPassiveTeaching = "Disable ALL Passive Teaching",
+  Sandbox_Apprenticeship_disableAllPassiveTeaching_tooltip = "(Overrides All Passive selections) Players won't be able to learn Fitness and Strength",
+
+  Sandbox_Apprenticeship_disableAllAgilityTeaching = "Disable ALL Agility Teaching",
+  Sandbox_Apprenticeship_disableAllAgilityTeaching_tooltip = "(Overrides All Agility selections) Players won't be able to learn Sprinting, lightfooted, Nimble and Sneaking",
+
+  Sandbox_Apprenticeship_disableAllCombatTeaching = "Disable ALL Combat Teaching",
+  Sandbox_Apprenticeship_disableAllCombatTeaching_tooltip = "(Overrides All Combat selections) Players won't be able to learn Aiming, Axe, Long Blunt, Short Blunt, Long Blade, Short Blade, Spear and Maintenance",
+
+  Sandbox_Apprenticeship_disableAllCraftingTeaching = "Disable ALL Crafting Teaching",
+  Sandbox_Apprenticeship_disableAllCraftingTeaching_tooltip = "(Overrides All Crafting selections) Players won't be able to learn Carpentry, Cooking, Farming, First Aid, Electrical, Metalworking, Mechanics and Tailoring",
+
+  Sandbox_Apprenticeship_disableAllFirearmTeaching = "Disable ALL Firearm Teaching",
+  Sandbox_Apprenticeship_disableAllFirearmTeaching_tooltip = "(Overrides All Firearm selections) Players won't be able to learn Aiming and Reloading",
+
+  Sandbox_Apprenticeship_disableAllSurvivalistTeaching = "Disable ALL Survival Teaching",
+  Sandbox_Apprenticeship_disableAllSurvivalistTeaching_tooltip = "(Overrides All Survival selections) Players won't be able to learn Fishing, Foraging and Trapping",
+}
+
+
