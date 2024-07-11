@@ -7,4 +7,6 @@ UI_EN = {
   UI_trait_badTeacherdesc = "You always had trouble putting two and two together for others. <br> 1/8 XP gained from all learners in all skills.",
   UI_trait_classDismissed = "Class Dismissed",
   UI_trait_classDismisseddesc = "Whether out of frustration or an air of secrecy, you won’t teach anybody anything. <br>Other players can't learn skills from this character.",
+  UI_trait_dunce = "Dunce",
+  UI_trait_duncedesc = "You are unable to learn new things.",
 }

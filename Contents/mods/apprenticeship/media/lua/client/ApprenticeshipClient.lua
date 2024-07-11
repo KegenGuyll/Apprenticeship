@@ -73,6 +73,11 @@ local function AddXP(character, perk, level)
       return;
     end
 
+    if teacher:HasTrait("dunce") then
+      print("Skipping " .. perk:getName() .. " because teacher has dunce");
+      return;
+    end
+
     for i=0, array_size-1, 1 do
       local onlinePlayer = players:get(i);
 
@@ -126,6 +131,11 @@ local function handleServerCommand(module, command, args)
       local target = getPlayerByOnlineID(args.target)
       local teacher = getPlayerByOnlineID(args.teacher)
       local perk = Perks[args.perk]
+
+      if target:hasTrait("dunce") then
+        print("Skipping " .. perk:getName() .. " because target has dunce");
+        return;
+      end
 
       if Apprenticeship.sandboxSettings.hideStudentHaloText == false then
         target:setHaloNote("Learning from " .. teacher:getDisplayName() .. " " .. args.amount .. " XP " .. "(" .. perk:getName() .. ")");
