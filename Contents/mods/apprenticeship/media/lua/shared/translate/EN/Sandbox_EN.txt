@@ -114,6 +114,9 @@ Sandbox_EN = {
 
   Sandbox_Apprenticeship_professorTraitGain = "Professor Xp Amount",
   Sandbox_Apprenticeship_professorTraitGain_tooltip = "The amount of experience a player will give when teaching a skill if they have the Professor trait (number is divided by xp gained so less is more)",
+
+  Sandbox_Apprenticeship_studentBoredomReduction = "Student Boredom Reduction Amount",
+  Sandbox_Apprenticeship_studentBoredomReduction_tooltip = "The amount of boredom a student will lose when learning a skill with a passive (boost multiplier)",
 }
 
 

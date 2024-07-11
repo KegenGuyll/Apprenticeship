@@ -141,7 +141,7 @@ local function handleServerCommand(module, command, args)
         local bodydamage = target:getBodyDamage();
         local boredom = bodydamage:getBoredomLevel();
 
-        bodydamage:setBoredomLevel(boredom - 0.1);
+        bodydamage:setBoredomLevel(boredom - Apprenticeship.sandboxSettings.studentBoredomReduction);
 
         print(target:getDisplayName() .. " is less bored becuase they have a passion for " .. perk:getName());
       end

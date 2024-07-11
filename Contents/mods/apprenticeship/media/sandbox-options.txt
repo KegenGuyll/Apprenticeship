@@ -30,6 +30,16 @@ option Apprenticeship.savantTraitGain
 	translation = Apprenticeship_savantTraitGain,
 }
 
+option Apprenticeship.studentBoredomReduction
+{
+	type = integer,
+	min = 1,
+	max = 10,
+	default = 0.1,
+	page = Apprenticeship,
+	translation = Apprenticeship_studentBoredomReduction,
+}
+
 option Apprenticeship.professorTraitGain
 {
 	type = integer,

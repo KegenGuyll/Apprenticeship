@@ -44,6 +44,7 @@ Apprenticeship.server.fetchSandboxVars = function ()
   Apprenticeship.sandboxSettings.professorTraitGain = SandboxVars.Apprenticeship.professorTraitGain;
   Apprenticeship.sandboxSettings.badTeacherTraitGain = SandboxVars.Apprenticeship.badTeacherTraitGain;
   Apprenticeship.sandboxSettings.defaultTeachingAmount = SandboxVars.Apprenticeship.defaultTeachingAmount;
+  Apprenticeship.sandboxSettings.studentBoredomReduction = SandboxVars.Apprenticeship.studentBoredomReduction;
 end
 
 Apprenticeship.server.setup = function ()
