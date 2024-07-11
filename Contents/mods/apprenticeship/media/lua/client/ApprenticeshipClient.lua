@@ -137,6 +137,15 @@ local function handleServerCommand(module, command, args)
         return;
       end
 
+      if target:getXp():getPerkBoost(perk) ~= 0 then
+        local bodydamage = target:getBodyDamage();
+        local boredom = bodydamage:getBoredomLevel();
+
+        bodydamage:setBoredomLevel(boredom - 0.1);
+
+        print(target:getDisplayName() .. " is less bored becuase they have a passion for " .. perk:getName());
+      end
+
       if Apprenticeship.sandboxSettings.hideStudentHaloText == false then
         target:setHaloNote("Learning from " .. teacher:getDisplayName() .. " " .. args.amount .. " XP " .. "(" .. perk:getName() .. ")");
       end
