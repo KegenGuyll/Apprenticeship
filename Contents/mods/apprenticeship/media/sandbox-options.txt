@@ -32,8 +32,8 @@ option Apprenticeship.savantTraitGain
 
 option Apprenticeship.studentBoredomReduction
 {
-	type = integer,
-	min = 1,
+	type = double,
+	min = 0.0,
 	max = 10,
 	default = 0.1,
 	page = Apprenticeship,
