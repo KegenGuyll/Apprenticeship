@@ -40,6 +40,10 @@ Apprenticeship.server.fetchSandboxVars = function ()
   Apprenticeship.sandboxSettings.disableAllCraftingTeaching = SandboxVars.Apprenticeship.disableAllCraftingTeaching;
   Apprenticeship.sandboxSettings.disableAllFirearmTeaching = SandboxVars.Apprenticeship.disableAllFirearmTeaching;
   Apprenticeship.sandboxSettings.disableAllSurvivalistTeaching = SandboxVars.Apprenticeship.disableAllSurvivalistTeaching;
+  Apprenticeship.sandboxSettings.savantTraitGain = SandboxVars.Apprenticeship.savantTraitGain;
+  Apprenticeship.sandboxSettings.professorTraitGain = SandboxVars.Apprenticeship.professorTraitGain;
+  Apprenticeship.sandboxSettings.badTeacherTraitGain = SandboxVars.Apprenticeship.badTeacherTraitGain;
+  Apprenticeship.sandboxSettings.defaultTeachingAmount = SandboxVars.Apprenticeship.defaultTeachingAmount;
 end
 
 Apprenticeship.server.setup = function ()

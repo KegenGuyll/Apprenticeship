@@ -102,6 +102,18 @@ Sandbox_EN = {
 
   Sandbox_Apprenticeship_disableAllSurvivalistTeaching = "Disable ALL Survival Teaching",
   Sandbox_Apprenticeship_disableAllSurvivalistTeaching_tooltip = "(Overrides All Survival selections) Players won't be able to learn Fishing, Foraging and Trapping",
+
+  Sandbox_Apprenticeship_defaultTeachingAmount = "Default Teaching Amount",
+  Sandbox_Apprenticeship_defaultTeachingAmount_tooltip = "The default amount of experience a player will give when teaching a skill (number is divided by xp gained so less is more)",
+
+  Sandbox_Apprenticeship_badTeacherTraitGain = "Bad Teacher Xp Amount",
+  Sandbox_Apprenticeship_badTeacherTraitGain_tooltip = "The amount of experience a player will give when teaching a skill if they have the Bad Teacher trait (number is divided by xp gained so less is more)",
+
+  Sandbox_Apprenticeship_savantTraitGain = "Savant Xp Amount",
+  Sandbox_Apprenticeship_savantTraitGain_tooltip = "The amount of experience a player will give when teaching a skill if they have the Savant trait (number is divided by xp gained so less is more)",
+
+  Sandbox_Apprenticeship_professorTraitGain = "Professor Xp Amount",
+  Sandbox_Apprenticeship_professorTraitGain_tooltip = "The amount of experience a player will give when teaching a skill if they have the Professor trait (number is divided by xp gained so less is more)",
 }
 
 

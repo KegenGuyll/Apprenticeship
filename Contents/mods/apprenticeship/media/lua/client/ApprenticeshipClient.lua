@@ -67,12 +67,6 @@ local function AddXP(character, perk, level)
 
   if teacher ~= nil then
 
-    if teacher:HasTrait("savant") then
-      if teacher:getXp():getPerkBoost(perk) == 0 then
-        print("Skipping " .. perk:getName() .. " because teacher does not have a perk boost");
-        return;
-      end
-    end
 
     if teacher:HasTrait("classDismissed") then
       print("Skipping " .. perk:getName() .. " because teacher has classDismissed");
@@ -92,22 +86,25 @@ local function AddXP(character, perk, level)
             teacher = teacher:getOnlineID(),
             perk = perk:getId(),
             -- default amount is 1/5 of the level
-            amount = level / 5
+            amount = level / Apprenticeship.sandboxSettings.defaultTeachingAmount
           }
 
           if teacher:HasTrait("savant") then
             print("savant trait found")
-            args.amount = level / 3;
+            if teacher:getXp():getPerkBoost(perk) ~= 0 then
+              print("boosted " .. perk:getName() .. " because of savant");
+              args.amount = level / Apprenticeship.sandboxSettings.savantTraitGain;
+            end
           end
 
           if teacher:HasTrait("professor") then
             print("professor trait found")
-            args.amount = level / 3;
+            args.amount = level / Apprenticeship.sandboxSettings.professorTraitGain;
           end
 
           if teacher:HasTrait("badTeacher") then
             print("badTeacher trait found")
-            args.amount = level / 8;
+            args.amount = level / Apprenticeship.sandboxSettings.badTeacherTraitGain;
           end
 
           --- send the TeachPerk command to the server

@@ -10,6 +10,46 @@ option Apprenticeship.maxDistance
 	translation = Apprenticeship_maxDistance,
 }
 
+option Apprenticeship.defaultTeachingAmount
+{
+	type = integer,
+	min = 1,
+	max = 100,
+	default = 5,
+	page = Apprenticeship,
+	translation = Apprenticeship_defaultTeachingAmount,
+}
+
+option Apprenticeship.savantTraitGain
+{
+	type = integer,
+	min = 1,
+	max = 100,
+	default = 3,
+	page = Apprenticeship,
+	translation = Apprenticeship_savantTraitGain,
+}
+
+option Apprenticeship.professorTraitGain
+{
+	type = integer,
+	min = 1,
+	max = 100,
+	default = 3,
+	page = Apprenticeship,
+	translation = Apprenticeship_professorTraitGain,
+}
+
+option Apprenticeship.badTeacherTraitGain
+{
+	type = integer,
+	min = 1,
+	max = 100,
+	default = 8,
+	page = Apprenticeship,
+	translation = Apprenticeship_badTeacherTraitGain,
+}
+
 option Apprenticeship.hideTeacherHaloText
 {
 	type = boolean,
@@ -29,7 +69,7 @@ option Apprenticeship.hideStudentHaloText
 option Apprenticeship.disableAllPassiveTeaching
 {
 	type = boolean,
-	default = false,
+	default = true,
 	page = Apprenticeship,
 	translation = Apprenticeship_disableAllPassiveTeaching,
 }
