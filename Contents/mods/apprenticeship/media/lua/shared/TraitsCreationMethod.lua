@@ -7,7 +7,7 @@ local function  initTraits()
   local badTeacher = TraitFactory.addTrait("badTeacher", getText("UI_trait_badTeacher"), -1, getText("UI_trait_badTeacherdesc"), false, false);
   local classDismissed = TraitFactory.addTrait("classDismissed", getText("UI_trait_classDismissed"), -3, getText("UI_trait_classDismisseddesc"), false, false);
 
-  local dunce = TraitFactory.addTrait("dunce", getText("UI_trait_dunce"), -5, getText("UI_trait_duncedesc"), false, false);
+  local dunce = TraitFactory.addTrait("dunce", getText("UI_trait_dunce"), -4, getText("UI_trait_duncedesc"), false, false);
 
   TraitFactory.setMutualExclusive('savant', 'badTeacher')
   TraitFactory.setMutualExclusive('savant', 'classDismissed')
