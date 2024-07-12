@@ -132,7 +132,7 @@ local function handleServerCommand(module, command, args)
       local teacher = getPlayerByOnlineID(args.teacher)
       local perk = Perks[args.perk]
 
-      if target:hasTrait("dunce") then
+      if target:HasTrait("dunce") then
         print("Skipping " .. perk:getName() .. " because target has dunce");
         return;
       end
