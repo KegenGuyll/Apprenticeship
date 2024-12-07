@@ -44,6 +44,15 @@ local function  isPerkDisabled(perk)
   return Apprenticeship.sandboxSettings[searchString];
 end
 
+local function roundNumber(num)
+  local decimalPart = num - math.floor(num) -- Get decimal part
+  if decimalPart < 0.5 then 
+      return math.floor(num * 10) / 10 -- Round down
+  else 
+      return math.ceil(num * 10) / 10 -- Round up
+  end
+end
+
 local function AddXP(character, perk, level)
   local players = getOnlinePlayers();
   local array_size 	= players:size();
@@ -143,11 +152,11 @@ local function handleServerCommand(module, command, args)
 
         bodydamage:setBoredomLevel(boredom - Apprenticeship.sandboxSettings.studentBoredomReduction);
 
-        print(target:getDisplayName() .. " is less bored becuase they have a passion for " .. perk:getName());
+        print(target:getDisplayName() .. " is less bored because they have a passion for " .. perk:getName());
       end
 
       if Apprenticeship.sandboxSettings.hideStudentHaloText == false then
-        target:setHaloNote("Learning from " .. teacher:getDisplayName() .. " " .. args.amount .. " XP " .. "(" .. perk:getName() .. ")");
+        target:setHaloNote("Learning from " .. teacher:getDisplayName() .. " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")");
       end
 
       target:getXp():AddXP(perk, args.amount, false, true, true)
