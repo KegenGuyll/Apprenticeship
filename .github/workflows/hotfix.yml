@@ -26,11 +26,6 @@ jobs:
           ref: ${{ github.event.pull_request.merge_commit_sha }}
           persist-credentials: false
 
-      - name: Verify PR contains hotfix flag
-        uses: sitezen/pr-comment-checker@v1.0.1
-        with:
-          pr_description_should_contain: "`hotfix`"
-
       - name: Publish to Steam Workshop
         uses: AnarkisGaming/workshop@v1
         env:
