@@ -1,31 +1,46 @@
 name: "HOTFIX to Workshop"
 
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - main
     types:
       - closed
 
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: hotfix-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   hotfix:
-    if: github.event.pull_request.merged == true
+    if: ${{ github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
+    env:
+      STEAM_ACCOUNT_NAME: ${{ secrets.STEAM_USERNAME }}
+      STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout trusted merge commit
+        uses: actions/checkout@v4
+        with:
+          # Checkout the merge commit that now lives on main (trusted), not the PR head.
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          persist-credentials: false
 
-      - uses: sitezen/pr-comment-checker@v1.0.1
+      - name: Verify PR contains hotfix flag
+        uses: sitezen/pr-comment-checker@v1.0.1
         with:
           pr_description_should_contain: "`hotfix`"
 
-      - uses: AnarkisGaming/workshop@v1
+      - name: Publish to Steam Workshop
+        uses: AnarkisGaming/workshop@v1
         with:
-          appID: 108600
-          #publishedFileID -- workshop ID
-          publishedFileID: 3285160052
-          #changelog: 'log of changes'
+          appID: "108600"
+          # publishedFileID -- workshop ID
+          publishedFileID: "3285160052"
+          # changelog: 'log of changes'
           path: Contents
-        env:
-          STEAM_ACCOUNT_NAME: ${{ secrets.STEAM_USERNAME }}
-          STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD  }}
