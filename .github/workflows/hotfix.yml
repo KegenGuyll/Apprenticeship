@@ -4,8 +4,7 @@ on:
   pull_request_target:
     branches:
       - main
-    types:
-      - closed
+    types: [closed]
 
 permissions:
   contents: read
@@ -19,10 +18,6 @@ jobs:
   hotfix:
     if: ${{ github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
-    env:
-      STEAM_ACCOUNT_NAME: ${{ secrets.STEAM_USERNAME }}
-      STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
-
     steps:
       - name: Checkout trusted merge commit
         uses: actions/checkout@v4
@@ -38,6 +33,9 @@ jobs:
 
       - name: Publish to Steam Workshop
         uses: AnarkisGaming/workshop@v1
+        env:
+          STEAM_ACCOUNT_NAME: ${{ secrets.STEAM_USERNAME }}
+          STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
         with:
           appID: "108600"
           # publishedFileID -- workshop ID
