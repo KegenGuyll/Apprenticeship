@@ -3,7 +3,7 @@ Apprenticeship = Apprenticeship or {};
 APP_OPTIONS = {
   maxDistance = 5,
   moduleName = "TeachPerk",
-  commnadName = "AddXP",
+  commandName = "AddXP",
   sandboxSettings = {
     maxDistance = 5
   },
