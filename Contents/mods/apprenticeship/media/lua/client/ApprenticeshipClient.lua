@@ -1,6 +1,6 @@
 require "ISPlayerStatsUI.lua"
 
-local function  isPerkDisabled(perk)
+local function isPerkDisabled(perk)
   local searchString = "disableTeaching" .. perk:getId();
   local perkParent = perk:getParent():getName();
 
@@ -46,17 +46,17 @@ end
 
 local function roundNumber(num)
   local decimalPart = num - math.floor(num) -- Get decimal part
-  if decimalPart < 0.5 then 
-      return math.floor(num * 10) / 10 -- Round down
-  else 
-      return math.ceil(num * 10) / 10 -- Round up
+  if decimalPart < 0.5 then
+    return math.floor(num * 10) / 10        -- Round down
+  else
+    return math.ceil(num * 10) / 10         -- Round up
   end
 end
 
 local function AddXP(character, perk, level)
-  local players = getOnlinePlayers();
-  local array_size 	= players:size();
-  local teacher = nil;
+  local players    = getOnlinePlayers();
+  local array_size = players:size();
+  local teacher    = nil;
 
   local shouldSkip = isPerkDisabled(perk);
 
@@ -65,7 +65,7 @@ local function AddXP(character, perk, level)
     return;
   end
 
-  for i=0, array_size-1, 1 do
+  for i = 0, array_size - 1, 1 do
     local onlinePlayer = players:get(i);
 
     if onlinePlayer:getDisplayName() == character:getDisplayName() then
@@ -75,8 +75,6 @@ local function AddXP(character, perk, level)
   end
 
   if teacher ~= nil then
-
-
     if teacher:HasTrait("classDismissed") then
       print("Skipping " .. perk:getName() .. " because teacher has classDismissed");
       return;
@@ -87,14 +85,16 @@ local function AddXP(character, perk, level)
       return;
     end
 
-    for i=0, array_size-1, 1 do
+    for i = 0, array_size - 1, 1 do
       local onlinePlayer = players:get(i);
 
       if onlinePlayer:getDisplayName() ~= teacher:getDisplayName() then
-        local distance = math.sqrt((teacher:getX() - onlinePlayer:getX())^2) + ((teacher:getY() - onlinePlayer:getY())^2);
+        -- Correct Euclidean distance (sqrt(dx^2 + dy^2))
+        local dx = teacher:getX() - onlinePlayer:getX();
+        local dy = teacher:getY() - onlinePlayer:getY();
+        local distance = math.sqrt(dx * dx + dy * dy);
 
         if distance <= Apprenticeship.sandboxSettings.maxDistance then
-
           local args = {
             target = onlinePlayer:getOnlineID(),
             teacher = teacher:getOnlineID(),
@@ -122,13 +122,13 @@ local function AddXP(character, perk, level)
           end
 
           --- send the TeachPerk command to the server
-          sendClientCommand("MyMod", "AddXP", args)
-          
+          sendClientCommand("Apprenticeship", "AddXP", args)
+
           if Apprenticeship.sandboxSettings.hideTeacherHaloText == false then
             teacher:setHaloNote("Teaching " .. onlinePlayer:getDisplayName() .. " " .. "(" .. perk:getName() .. ")");
           end
         end
-      end  
+      end
     end
   end
 end
@@ -136,30 +136,59 @@ end
 
 --- more client stuff!
 local function handleServerCommand(module, command, args)
-  if module == "MyMod" and command == "AddXP" then
-      local target = getPlayerByOnlineID(args.target)
-      local teacher = getPlayerByOnlineID(args.teacher)
-      local perk = Perks[args.perk]
+  if module == "Apprenticeship" and command == "AddXP" then
+    local target = getPlayerByOnlineID(args.target)
+    local teacher = getPlayerByOnlineID(args.teacher)
+    local perk = Perks[args.perk]
 
-      if target:HasTrait("dunce") then
-        print("Skipping " .. perk:getName() .. " because target has dunce");
-        return;
+    if target:HasTrait("dunce") then
+      print("Skipping " .. perk:getName() .. " because target has dunce");
+      return;
+    end
+
+    if target:getXp():getPerkBoost(perk) ~= 0 then
+      local bodydamage = target:getBodyDamage();
+      local boredom = bodydamage:getBoredomLevel();
+
+      bodydamage:setBoredomLevel(boredom - Apprenticeship.sandboxSettings.studentBoredomReduction);
+
+      print(target:getDisplayName() .. " is less bored because they have a passion for " .. perk:getName());
+    end
+
+    -- Calculate potential "Breakthrough" bonus XP on the student side
+    local finalAmount = args.amount
+    local haloPrefix = nil
+
+    local sb = Apprenticeship.sandboxSettings or {}
+    local breakthroughsEnabled = sb.enableBreakthroughs == true
+    local chanceN = sb.breakthroughsChanceN or 1000
+
+    -- Use ZombRand if available for consistency with PZ, fallback to math.random
+    local function rollBreakthrough(n)
+      if ZombRand ~= nil then
+        return ZombRand(n) == 0
+      else
+        return math.random(0, n - 1) == 0
       end
+    end
 
-      if target:getXp():getPerkBoost(perk) ~= 0 then
-        local bodydamage = target:getBodyDamage();
-        local boredom = bodydamage:getBoredomLevel();
+    if breakthroughsEnabled and chanceN and chanceN > 0 and rollBreakthrough(chanceN) then
+      local baseMult = sb.breakthroughsBaseMultiplier or 1.0
+      local perLevelBonus = sb.breakthroughsPerLevelBonus or 0.1
+      local targetLevel = target:getPerkLevel(perk)
+      local bonus = finalAmount * (baseMult + (targetLevel * perLevelBonus))
+      finalAmount = finalAmount + bonus
+      haloPrefix = "Breakthrough! +" .. roundNumber(bonus) .. " XP "
+    end
 
-        bodydamage:setBoredomLevel(boredom - Apprenticeship.sandboxSettings.studentBoredomReduction);
+    if Apprenticeship.sandboxSettings.hideStudentHaloText == false then
+      local baseText = "Learning from " .. teacher:getDisplayName() .. " " .. roundNumber(finalAmount) .. " XP " ..
+          "(" .. perk:getName() .. ")"
+      local fullText = (haloPrefix and (haloPrefix .. "— ") or "") .. baseText
+      target:setHaloNote(fullText)
+    end
 
-        print(target:getDisplayName() .. " is less bored because they have a passion for " .. perk:getName());
-      end
-
-      if Apprenticeship.sandboxSettings.hideStudentHaloText == false then
-        target:setHaloNote("Learning from " .. teacher:getDisplayName() .. " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")");
-      end
-
-      target:getXp():AddXP(perk, args.amount, false, true, true)
+    target:getXp():AddXP(perk, finalAmount, false, true, true)
   end
 end
 
