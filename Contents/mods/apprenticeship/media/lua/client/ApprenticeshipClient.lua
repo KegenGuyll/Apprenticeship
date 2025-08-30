@@ -175,8 +175,10 @@ local function handleServerCommand(module, command, args)
     if breakthroughsEnabled and chanceN and chanceN > 0 and rollBreakthrough(chanceN) then
       local baseMult = sb.breakthroughsBaseMultiplier or 1.0
       local perLevelBonus = sb.breakthroughsPerLevelBonus or 0.1
-      local targetLevel = target:getPerkLevel(perk)
-      local bonus = finalAmount * (baseMult + (targetLevel * perLevelBonus))
+      local studentLevel = target:getPerkLevel(perk)
+      local teacherLevel = teacher and teacher:getPerkLevel(perk) or 0
+      -- bonus = (finalAmount * baseMult) + (teacherLevel * (studentLevel / 10) * perLevelBonus)
+      local bonus = (finalAmount * baseMult) + (teacherLevel * (studentLevel / 10) * perLevelBonus)
       finalAmount = finalAmount + bonus
       haloPrefix = "Breakthrough! +" .. roundNumber(bonus) .. " XP "
     end
