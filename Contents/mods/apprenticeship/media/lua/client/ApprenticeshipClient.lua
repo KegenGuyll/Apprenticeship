@@ -165,7 +165,7 @@ local function handleServerCommand(module, command, args)
       target:setHaloNote("Learning from " ..
         teacher:getDisplayName() ..
         " " ..
-        (args.teacherTraitReadable or "undefined") ..
+        "(" .. (args.teacherTraitReadable or "undefined") .. ")" ..
         " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")");
     end
 
