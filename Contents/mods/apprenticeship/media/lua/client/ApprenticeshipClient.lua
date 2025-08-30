@@ -75,20 +75,13 @@ local function AddXP(character, perk, level)
   end
 
   if teacher ~= nil then
-    local teacherTrait = nil
-    local teacherTraitReadable = nil
-
     if teacher:HasTrait("classDismissed") then
       print("Skipping " .. perk:getName() .. " because teacher has classDismissed");
-      teacherTrait = "classDismissed"
-      teacherTraitReadable = "Class Dismissed"
       return;
     end
 
     if teacher:HasTrait("dunce") then
       print("Skipping " .. perk:getName() .. " because teacher has dunce");
-      teacherTrait = "dunce"
-      teacherTraitReadable = "Dunce"
       return;
     end
 
@@ -103,8 +96,8 @@ local function AddXP(character, perk, level)
           local args = {
             target = onlinePlayer:getOnlineID(),
             teacher = teacher:getOnlineID(),
-            teacherTrait = teacherTrait,
-            teacherTraitReadable = teacherTraitReadable,
+            teacherTrait = "",
+            teacherTraitReadable = "",
             perk = perk:getId(),
             -- default amount is 1/5 of the level
             amount = level / Apprenticeship.sandboxSettings.defaultTeachingAmount
@@ -171,7 +164,9 @@ local function handleServerCommand(module, command, args)
     if Apprenticeship.sandboxSettings.hideStudentHaloText == false then
       target:setHaloNote("Learning from " ..
         teacher:getDisplayName() ..
-        " " .. (args.teacherTraitReadable) .. " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")");
+        " " ..
+        (args.teacherTraitReadable or "undefined") ..
+        " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")");
     end
 
     target:getXp():AddXP(perk, args.amount, false, true, true)
