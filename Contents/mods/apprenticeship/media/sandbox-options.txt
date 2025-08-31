@@ -98,6 +98,36 @@ option Apprenticeship.breakthroughsPerLevelBonus
 	translation = Apprenticeship_breakthroughsPerLevelBonus,
 }
 
+option Apprenticeship.breakthroughsKStudent
+{
+	type = double,
+	min = 0.0,
+	max = 10.0,
+	default = 0.1,
+	page = Apprenticeship,
+	translation = Apprenticeship_breakthroughsKStudent,
+}
+
+option Apprenticeship.breakthroughsKTeacher
+{
+	type = double,
+	min = 0.0,
+	max = 10.0,
+	default = 0.2,
+	page = Apprenticeship,
+	translation = Apprenticeship_breakthroughsKTeacher,
+}
+
+option Apprenticeship.breakthroughsKLevel
+{
+	type = double,
+	min = 0.0,
+	max = 10.0,
+	default = 0.3,
+	page = Apprenticeship,
+	translation = Apprenticeship_breakthroughsKLevel,
+}
+
 option Apprenticeship.hideTeacherHaloText
 {
 	type = boolean,

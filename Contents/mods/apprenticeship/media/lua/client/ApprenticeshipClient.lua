@@ -53,6 +53,29 @@ local function roundNumber(num)
   end
 end
 
+local function CalculateMentalBreakthroughXP(baseXp, studentLevel, teacherLevel, constants)
+  -- 1. Calculate the individual multiplier components
+
+  -- Bonus from the student's own level
+  local studentLevelBonusMultiplier = 1 + constants.kStudent * studentLevel
+
+  -- Bonus from the teacher's level
+  local teacherLevelBonusMultiplier = 1 + constants.kTeacher * teacherLevel
+
+  -- Bonus from the level gap (mentorship); cannot be negative
+  local levelDifference = math.max(0, teacherLevel - studentLevel)
+  local mentorshipMultiplier = 1 + constants.kLevel * levelDifference
+
+  -- 2. Calculate the total combined multiplier
+  local totalMultiplier = constants.critMultiplier * studentLevelBonusMultiplier * teacherLevelBonusMultiplier *
+  mentorshipMultiplier
+
+  -- 3. Calculate the final XP gained
+  local finalXp = baseXp * totalMultiplier
+
+  return finalXp
+end
+
 local function AddXP(character, perk, level)
   local players    = getOnlinePlayers();
   local array_size = players:size();
@@ -173,12 +196,16 @@ local function handleServerCommand(module, command, args)
     end
 
     if breakthroughsEnabled and chanceN and chanceN > 0 and rollBreakthrough(chanceN) then
-      local baseMult = sb.breakthroughsBaseMultiplier or 1.0
       local perLevelBonus = sb.breakthroughsPerLevelBonus or 0.1
       local studentLevel = target:getPerkLevel(perk)
       local teacherLevel = teacher and teacher:getPerkLevel(perk) or 0
-      -- bonus = (finalAmount * baseMult) + (teacherLevel * (studentLevel / 10) * perLevelBonus)
-      local bonus = (finalAmount * baseMult) + (teacherLevel * (studentLevel / 10) * perLevelBonus)
+      local constants = {
+        kStudent = sb.breakthroughsKStudent or 0.1,
+        kTeacher = sb.breakthroughsKTeacher or 0.2,
+        kLevel = sb.breakthroughsKLevel or 0.3,
+        critMultiplier = sb.breakthroughsBaseMultiplier or 1.0
+      }
+      local bonus = CalculateMentalBreakthroughXP(finalAmount, studentLevel, teacherLevel, constants)
       finalAmount = finalAmount + bonus
       haloPrefix = "Breakthrough! +" .. roundNumber(bonus) .. " XP "
     end
@@ -190,7 +217,7 @@ local function handleServerCommand(module, command, args)
       target:setHaloNote(fullText)
     end
 
-    target:getXp():AddXP(perk, finalAmount, false, true, true)
+    target:getXp():AddXP(perk, finalAmount)
   end
 end
 

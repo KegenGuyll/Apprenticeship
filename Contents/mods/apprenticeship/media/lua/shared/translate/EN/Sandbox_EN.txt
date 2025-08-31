@@ -129,6 +129,15 @@ Sandbox_EN = {
 
   Sandbox_Apprenticeship_breakthroughsPerLevelBonus = "Breakthrough Per-Level Bonus",
   Sandbox_Apprenticeship_breakthroughsPerLevelBonus_tooltip = "Each skill level adds this much to the bonus multiplier.",
+
+  Sandbox_Apprenticeship_breakthroughsKStudent = "Breakthrough Student Level Weight",
+  Sandbox_Apprenticeship_breakthroughsKStudent_tooltip = "Weight applied per student level when computing the breakthrough bonus.",
+
+  Sandbox_Apprenticeship_breakthroughsKTeacher = "Breakthrough Teacher Level Weight",
+  Sandbox_Apprenticeship_breakthroughsKTeacher_tooltip = "Weight applied per teacher level when computing the breakthrough bonus.",
+
+  Sandbox_Apprenticeship_breakthroughsKLevel = "Breakthrough Mentorship Gap Weight",
+  Sandbox_Apprenticeship_breakthroughsKLevel_tooltip = "Weight applied per level of difference (teacher - student, min 0) to reward mentorship.",
 }
 
 
