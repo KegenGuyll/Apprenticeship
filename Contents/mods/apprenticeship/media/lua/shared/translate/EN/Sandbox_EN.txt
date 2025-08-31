@@ -117,6 +117,9 @@ Sandbox_EN = {
 
   Sandbox_Apprenticeship_studentBoredomReduction = "Student Boredom Reduction Amount",
   Sandbox_Apprenticeship_studentBoredomReduction_tooltip = "The amount of boredom a student will lose when learning a skill with a passive (boost multiplier)",
+
+  Sandbox_Apprenticeship_requireSameFaction = "Require Same Faction",
+  Sandbox_Apprenticeship_requireSameFaction_tooltip = "If enabled, teaching/learning only works between members of the same faction or both factionless.",
 }
 
 

@@ -323,3 +323,11 @@ option Apprenticeship.disableTeachingPlantScavenging
 	page = Apprenticeship,
 	translation = Apprenticeship_disableTeachingPlantScavenging,
 }
+
+option Apprenticeship.requireSameFaction
+{
+	type = boolean,
+	default = true,
+	page = Apprenticeship,
+	translation = Apprenticeship_requireSameFaction,
+}
