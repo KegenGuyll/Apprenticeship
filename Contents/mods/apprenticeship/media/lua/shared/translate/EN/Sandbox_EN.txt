@@ -127,8 +127,6 @@ Sandbox_EN = {
   Sandbox_Apprenticeship_breakthroughsBaseMultiplier = "Breakthrough Base Multiplier",
   Sandbox_Apprenticeship_breakthroughsBaseMultiplier_tooltip = "Bonus XP is amount * (base + level * per-level).",
 
-  Sandbox_Apprenticeship_breakthroughsPerLevelBonus = "Breakthrough Per-Level Bonus",
-  Sandbox_Apprenticeship_breakthroughsPerLevelBonus_tooltip = "Each skill level adds this much to the bonus multiplier.",
 
   Sandbox_Apprenticeship_breakthroughsKStudent = "Breakthrough Student Level Weight",
   Sandbox_Apprenticeship_breakthroughsKStudent_tooltip = "Weight applied per student level when computing the breakthrough bonus.",

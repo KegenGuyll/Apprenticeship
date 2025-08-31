@@ -68,7 +68,7 @@ local function CalculateMentalBreakthroughXP(baseXp, studentLevel, teacherLevel,
 
   -- 2. Calculate the total combined multiplier
   local totalMultiplier = constants.critMultiplier * studentLevelBonusMultiplier * teacherLevelBonusMultiplier *
-  mentorshipMultiplier
+      mentorshipMultiplier
 
   -- 3. Calculate the final XP gained
   local finalXp = baseXp * totalMultiplier
@@ -196,7 +196,6 @@ local function handleServerCommand(module, command, args)
     end
 
     if breakthroughsEnabled and chanceN and chanceN > 0 and rollBreakthrough(chanceN) then
-      local perLevelBonus = sb.breakthroughsPerLevelBonus or 0.1
       local studentLevel = target:getPerkLevel(perk)
       local teacherLevel = teacher and teacher:getPerkLevel(perk) or 0
       local constants = {

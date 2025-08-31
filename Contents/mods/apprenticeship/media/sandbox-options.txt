@@ -88,15 +88,6 @@ option Apprenticeship.breakthroughsBaseMultiplier
 	translation = Apprenticeship_breakthroughsBaseMultiplier,
 }
 
-option Apprenticeship.breakthroughsPerLevelBonus
-{
-	type = double,
-	min = 0.0,
-	max = 10.0,
-	default = 0.1,
-	page = Apprenticeship,
-	translation = Apprenticeship_breakthroughsPerLevelBonus,
-}
 
 option Apprenticeship.breakthroughsKStudent
 {
