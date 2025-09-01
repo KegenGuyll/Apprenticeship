@@ -5,7 +5,6 @@ TextAPI = require "TextAPI"
 Events.OnGameStart.Add(function()
   -- Setting default options for TextAPI
   local LimeGreenColor = { 93, 219, 79, 1 }
-  TextAPI.SetFont(UIFont.Small)
   TextAPI.SetDefaults({
     color = LimeGreenColor,
     headZ = 0.85,
