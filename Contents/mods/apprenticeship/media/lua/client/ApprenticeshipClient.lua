@@ -1,18 +1,17 @@
 require "ISPlayerStatsUI.lua"
 TextAPI = require "TextAPI"
 
-local LimeGreenColor = { 93, 219, 79, 1 }
 
 Events.OnGameStart.Add(function()
   -- Setting default options for TextAPI
+  local LimeGreenColor = { 93, 219, 79, 1 }
   TextAPI.SetFont(UIFont.Small)
   TextAPI.SetDefaults({
     color = LimeGreenColor,
-    headZ = 1.5,
+    headZ = 0.85,
     behavior = 'stack',
     wrap = true,
-    wrapWidthPx = 300,
-    pixelOffset = 20
+    wrapWidthPx = 300
   })
 end)
 
