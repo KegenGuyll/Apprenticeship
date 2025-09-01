@@ -54,26 +54,23 @@ local function roundNumber(num)
 end
 
 local function CalculateMentalBreakthroughXP(baseXp, studentLevel, teacherLevel, constants)
-  -- 1. Calculate the individual multiplier components
+  -- New formula:
+  -- (baseXp * baseMult) + ((targetLevel * (MIN(targetLevelStudent, plateauLevel) / 10)) * perLevelBonus)
+  -- Where plateauLevel == targetLevel
 
-  -- Bonus from the student's own level
-  local studentLevelBonusMultiplier = 1 + constants.kStudent * studentLevel
+  local baseMult = (constants and constants.baseMult) or 1.0
+  local perLevelBonus = (constants and constants.perLevelBonus) or 1.0
 
-  -- Bonus from the teacher's level
-  local teacherLevelBonusMultiplier = 1 + constants.kTeacher * teacherLevel
+  local targetLevel = teacherLevel
+  local plateauLevel = targetLevel -- Same as targetLevel per requirement
+  local targetLevelStudent = studentLevel
 
-  -- Bonus from the level gap (mentorship); cannot be negative
-  local levelDifference = math.max(0, teacherLevel - studentLevel)
-  local mentorshipMultiplier = 1 + constants.kLevel * levelDifference
+  -- effectiveLevel will cause the xp to plateau at this level
+  local effectiveLevel = math.min(targetLevelStudent, plateauLevel)
 
-  -- 2. Calculate the total combined multiplier
-  local totalMultiplier = constants.critMultiplier * studentLevelBonusMultiplier * teacherLevelBonusMultiplier *
-      mentorshipMultiplier
+  local result = (baseXp * baseMult) + ((targetLevel * (effectiveLevel / 10)) * perLevelBonus)
 
-  -- 3. Calculate the final XP gained
-  local finalXp = baseXp * totalMultiplier
-
-  return finalXp
+  return result
 end
 
 local function AddXP(character, perk, level)
@@ -199,14 +196,14 @@ local function handleServerCommand(module, command, args)
       local studentLevel = target:getPerkLevel(perk)
       local teacherLevel = teacher and teacher:getPerkLevel(perk) or 0
       local constants = {
-        kStudent = sb.breakthroughsKStudent or 0.1,
-        kTeacher = sb.breakthroughsKTeacher or 0.2,
-        kLevel = sb.breakthroughsKLevel or 0.3,
-        critMultiplier = sb.breakthroughsBaseMultiplier or 1.0
+        -- base multiplier applied to the base XP amount
+        baseMult = sb.breakthroughsBaseMultiplier or 1.0,
+        -- per-level bonus applied to the teacher level scaled by min(student, teacher)
+        perLevelBonus = sb.breakthroughsPerLevelBonus or 1.0
       }
       local bonus = CalculateMentalBreakthroughXP(finalAmount, studentLevel, teacherLevel, constants)
       finalAmount = finalAmount + bonus
-      haloPrefix = "Breakthrough! +" .. roundNumber(bonus) .. " XP "
+      haloPrefix = "BREAKTHROUGH! +" .. roundNumber(bonus) .. " XP "
     end
 
     if Apprenticeship.sandboxSettings.hideStudentHaloText == false then

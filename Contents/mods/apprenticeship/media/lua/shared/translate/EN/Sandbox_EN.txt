@@ -125,17 +125,10 @@ Sandbox_EN = {
   Sandbox_Apprenticeship_breakthroughsChanceN_tooltip = "A lower number increases the chance. Example: 1000 means a 1/1000 chance per teaching event.",
 
   Sandbox_Apprenticeship_breakthroughsBaseMultiplier = "Breakthrough Base Multiplier",
-  Sandbox_Apprenticeship_breakthroughsBaseMultiplier_tooltip = "Bonus XP is amount * (base + level * per-level).",
+  Sandbox_Apprenticeship_breakthroughsBaseMultiplier_tooltip = "Bonus XP = (base XP * base multiplier) + (teacher level * min(student, teacher)/10 * per-level bonus)",
 
-
-  Sandbox_Apprenticeship_breakthroughsKStudent = "Breakthrough Student Level Weight",
-  Sandbox_Apprenticeship_breakthroughsKStudent_tooltip = "Weight applied per student level when computing the breakthrough bonus.",
-
-  Sandbox_Apprenticeship_breakthroughsKTeacher = "Breakthrough Teacher Level Weight",
-  Sandbox_Apprenticeship_breakthroughsKTeacher_tooltip = "Weight applied per teacher level when computing the breakthrough bonus.",
-
-  Sandbox_Apprenticeship_breakthroughsKLevel = "Breakthrough Mentorship Gap Weight",
-  Sandbox_Apprenticeship_breakthroughsKLevel_tooltip = "Weight applied per level of difference (teacher - student, min 0) to reward mentorship.",
+  Sandbox_Apprenticeship_breakthroughsPerLevelBonus = "Breakthrough Per-Level Bonus",
+  Sandbox_Apprenticeship_breakthroughsPerLevelBonus_tooltip = "Scales the teacher-level component of the breakthrough bonus.",
 }
 
 
