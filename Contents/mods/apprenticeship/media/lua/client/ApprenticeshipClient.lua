@@ -1,12 +1,12 @@
 require "ISPlayerStatsUI.lua"
 TextAPI = require "TextAPI"
 
-local LimeGreenColor = { [1] = 93, [2] = 219, [3] = 79, [4] = 1 }
+local LimeGreenColor = { 93, 219, 79, 1 }
 
 Events.OnGameStart.Add(function()
   -- Setting default options for TextAPI
   TextAPI.SetFont(UIFont.Small)
-  TextAPI._normalizeOpts({
+  TextAPI.SetDefaults({
     color = LimeGreenColor,
     headZ = 1.5,
     behavior = 'stack',
@@ -146,7 +146,7 @@ local function AddXP(character, perk, level)
             local fullText = "Teaching " ..
                 onlinePlayer:getDisplayName() ..
                 " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")";
-            TextAPI.ShowOverheadText(teacher, fullText, { behavior = "stack" })
+            TextAPI.ShowOverheadText(teacher, fullText)
           end
         end
       end
@@ -179,7 +179,7 @@ local function handleServerCommand(module, command, args)
     if Apprenticeship.sandboxSettings.hideStudentHaloText == false then
       local fullText = "Learning from " ..
           teacher:getDisplayName() .. " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")";
-      TextAPI.ShowOverheadText(target, fullText, { behavior = "stack" })
+      TextAPI.ShowOverheadText(target, fullText)
     end
 
     target:getXp():AddXP(perk, args.amount, false, true, true)
