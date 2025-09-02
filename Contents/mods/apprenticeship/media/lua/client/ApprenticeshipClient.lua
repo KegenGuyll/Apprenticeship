@@ -14,10 +14,6 @@ Events.OnGameStart.Add(function()
   })
 end)
 
-
-
-
-
 local function isPerkDisabled(perk)
   local searchString = "disableTeaching" .. perk:getId();
   local perkParent = perk:getParent():getName();
@@ -183,8 +179,13 @@ local function handleServerCommand(module, command, args)
     end
 
     if Apprenticeship.sandboxSettings.hideStudentHaloText == false then
-      target:setHaloNote("Learning from " ..
-      teacher:getDisplayName() .. " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")");
+      local traitStr = args.teacherTraitReadable and (" (" .. args.teacherTraitReadable .. ")") or ""
+      local fullText = "Learning from " ..
+          teacher:getDisplayName() ..
+          traitStr ..
+          " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")";
+
+      TextAPI.ShowOverheadText(target, fullText);
     end
 
     target:getXp():AddXP(perk, args.amount, false, true, true)
