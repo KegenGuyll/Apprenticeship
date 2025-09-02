@@ -22,7 +22,7 @@ Apprenticeship.server.fetchSandboxVars = function()
   Apprenticeship.sandboxSettings.disableTeachingMetalWelding = SandboxVars.Apprenticeship.disableTeachingMetalWelding;
   Apprenticeship.sandboxSettings.disableTeachingNimble = SandboxVars.Apprenticeship.disableTeachingNimble;
   Apprenticeship.sandboxSettings.disableTeachingPlantScavenging = SandboxVars.Apprenticeship
-  .disableTeachingPlantScavenging;
+      .disableTeachingPlantScavenging;
   Apprenticeship.sandboxSettings.disableTeachingReloading = SandboxVars.Apprenticeship.disableTeachingReloading;
   Apprenticeship.sandboxSettings.disableTeachingSmallBlade = SandboxVars.Apprenticeship.disableTeachingSmallBlade;
   Apprenticeship.sandboxSettings.disableTeachingSmallBlunt = SandboxVars.Apprenticeship.disableTeachingSmallBlunt;
@@ -42,7 +42,7 @@ Apprenticeship.server.fetchSandboxVars = function()
   Apprenticeship.sandboxSettings.disableAllCraftingTeaching = SandboxVars.Apprenticeship.disableAllCraftingTeaching;
   Apprenticeship.sandboxSettings.disableAllFirearmTeaching = SandboxVars.Apprenticeship.disableAllFirearmTeaching;
   Apprenticeship.sandboxSettings.disableAllSurvivalistTeaching = SandboxVars.Apprenticeship
-  .disableAllSurvivalistTeaching;
+      .disableAllSurvivalistTeaching;
   Apprenticeship.sandboxSettings.savantTraitGain = SandboxVars.Apprenticeship.savantTraitGain;
   Apprenticeship.sandboxSettings.professorTraitGain = SandboxVars.Apprenticeship.professorTraitGain;
   Apprenticeship.sandboxSettings.badTeacherTraitGain = SandboxVars.Apprenticeship.badTeacherTraitGain;
@@ -60,16 +60,6 @@ local function handleClientCommand(module, command, player, args)
   -- make sure we only do stuff if it's actually our command
   if module == "MyMod" and command == "AddXP" then
     local target = getPlayerByOnlineID(args.target)
-    -- Validate teacher meets minimum skill floor before forwarding
-    local minLevel = (Apprenticeship.sandboxSettings and Apprenticeship.sandboxSettings.minTeacherLevel) or 0
-    local perk = Perks[args.perk]
-    if perk and player and player.getPerkLevel then
-      local teacherLevel = player:getPerkLevel(perk)
-      if teacherLevel < minLevel then
-        -- below minimum level; drop the request
-        return
-      end
-    end
     -- the target argument sends the command to only that client
     sendServerCommand(target, "MyMod", "AddXP", args)
   end
