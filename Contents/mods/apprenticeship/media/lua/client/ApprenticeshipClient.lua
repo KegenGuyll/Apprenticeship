@@ -1,4 +1,22 @@
 require "ISPlayerStatsUI.lua"
+TextAPI = require "TextAPI"
+
+
+Events.OnGameStart.Add(function()
+  -- Setting default options for TextAPI
+  local LimeGreenColor = { 93, 219, 79, 1 }
+  TextAPI.SetDefaults({
+    color = LimeGreenColor,
+    headZ = 0.85,
+    behavior = 'stack',
+    wrap = true,
+    wrapWidthPx = 300
+  })
+end)
+
+
+
+
 
 local function isPerkDisabled(perk)
   local searchString = "disableTeaching" .. perk:getId();
@@ -131,7 +149,10 @@ local function AddXP(character, perk, level)
           sendClientCommand("MyMod", "AddXP", args)
 
           if Apprenticeship.sandboxSettings.hideTeacherHaloText == false then
-            teacher:setHaloNote("Teaching " .. onlinePlayer:getDisplayName() .. " " .. "(" .. perk:getName() .. ")");
+            local fullText = "Teaching " ..
+                onlinePlayer:getDisplayName() ..
+                " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")";
+            TextAPI.ShowOverheadText(teacher, fullText)
           end
         end
       end
@@ -163,10 +184,7 @@ local function handleServerCommand(module, command, args)
 
     if Apprenticeship.sandboxSettings.hideStudentHaloText == false then
       target:setHaloNote("Learning from " ..
-        teacher:getDisplayName() ..
-        " " ..
-        "(" .. (args.teacherTraitReadable or "undefined") .. ")" ..
-        " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")");
+      teacher:getDisplayName() .. " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")");
     end
 
     target:getXp():AddXP(perk, args.amount, false, true, true)
