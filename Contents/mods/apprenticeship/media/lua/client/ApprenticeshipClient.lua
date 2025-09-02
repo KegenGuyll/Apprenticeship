@@ -79,6 +79,7 @@ local function AddXP(character, perk, level)
     return;
   end
 
+
   for i = 0, array_size - 1, 1 do
     local onlinePlayer = players:get(i);
 
@@ -89,6 +90,13 @@ local function AddXP(character, perk, level)
   end
 
   if teacher ~= nil then
+    -- Enforce skill floor: teacher must be at least minTeacherLevel in this perk
+    local minLevel = (Apprenticeship.sandboxSettings and Apprenticeship.sandboxSettings.minTeacherLevel) or 0
+    if teacher.getPerkLevel and teacher:getPerkLevel(perk) < minLevel then
+      print("Skipping " .. perk:getName() .. " because teacher level is below minimum")
+      return
+    end
+
     if teacher:HasTrait("classDismissed") then
       print("Skipping " .. perk:getName() .. " because teacher has classDismissed");
       return;
