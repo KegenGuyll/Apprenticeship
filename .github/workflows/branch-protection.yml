@@ -1,0 +1,77 @@
+name: "Branch Protection Enforcement"
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  enforce-branch-protection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if PR is from dev branch
+        id: check-source
+        run: |
+          echo "Source branch: ${{ github.head_ref }}"
+          echo "Target branch: ${{ github.base_ref }}"
+          
+          if [[ "${{ github.head_ref }}" != "dev" ]]; then
+            echo "❌ ERROR: Pull requests to main branch are only allowed from dev branch."
+            echo "Current source branch: ${{ github.head_ref }}"
+            echo "Please merge your changes to dev branch first, then create a PR from dev to main."
+            echo "allowed=false" >> $GITHUB_OUTPUT
+          else
+            echo "✅ SUCCESS: Pull request from dev branch is allowed."
+            echo "allowed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Comment on PR if not from dev
+        if: steps.check-source.outputs.allowed == 'false'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const message = `
+            ## ❌ Branch Protection Rule Violation
+            
+            **This pull request violates the branch protection rule.**
+            
+            ### Rule: Only \`dev\` branch can be merged into \`main\`
+            
+            - **Source branch**: \`${{ github.head_ref }}\`
+            - **Target branch**: \`${{ github.base_ref }}\`
+            
+            ### Required Action:
+            1. Close this pull request
+            2. Merge your changes into the \`dev\` branch first
+            3. Create a new pull request from \`dev\` to \`main\`
+            
+            ### Workflow:
+            \`\`\`
+            ${{ github.head_ref }} → dev → main
+            \`\`\`
+            
+            For more information, see [Branch Protection Documentation](../blob/main/BRANCH_PROTECTION.md).
+            `;
+            
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: message
+            });
+
+      - name: Fail if not from dev branch
+        if: steps.check-source.outputs.allowed == 'false'
+        run: |
+          echo "::error::Pull request must be from dev branch to main branch"
+          exit 1
+
+      - name: Success message
+        if: steps.check-source.outputs.allowed == 'true'
+        run: |
+          echo "✅ Branch protection check passed: dev → main merge is allowed"

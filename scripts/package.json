@@ -1,0 +1,16 @@
+{
+  "name": "branch-protection-setup",
+  "version": "1.0.0",
+  "description": "Script to set up GitHub branch protection rules",
+  "main": "setup-branch-protection.js",
+  "scripts": {
+    "setup": "node setup-branch-protection.js"
+  },
+  "dependencies": {
+    "@octokit/rest": "^20.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
