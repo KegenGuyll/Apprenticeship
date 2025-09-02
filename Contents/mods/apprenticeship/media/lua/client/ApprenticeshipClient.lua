@@ -1,6 +1,6 @@
 require "ISPlayerStatsUI.lua"
 
-local function  isPerkDisabled(perk)
+local function isPerkDisabled(perk)
   local searchString = "disableTeaching" .. perk:getId();
   local perkParent = perk:getParent():getName();
 
@@ -46,17 +46,17 @@ end
 
 local function roundNumber(num)
   local decimalPart = num - math.floor(num) -- Get decimal part
-  if decimalPart < 0.5 then 
-      return math.floor(num * 10) / 10 -- Round down
-  else 
-      return math.ceil(num * 10) / 10 -- Round up
+  if decimalPart < 0.5 then
+    return math.floor(num * 10) / 10        -- Round down
+  else
+    return math.ceil(num * 10) / 10         -- Round up
   end
 end
 
 local function AddXP(character, perk, level)
-  local players = getOnlinePlayers();
-  local array_size 	= players:size();
-  local teacher = nil;
+  local players    = getOnlinePlayers();
+  local array_size = players:size();
+  local teacher    = nil;
 
   local shouldSkip = isPerkDisabled(perk);
 
@@ -65,7 +65,8 @@ local function AddXP(character, perk, level)
     return;
   end
 
-  for i=0, array_size-1, 1 do
+
+  for i = 0, array_size - 1, 1 do
     local onlinePlayer = players:get(i);
 
     if onlinePlayer:getDisplayName() == character:getDisplayName() then
@@ -75,6 +76,14 @@ local function AddXP(character, perk, level)
   end
 
   if teacher ~= nil then
+    -- Enforce skill floor: teacher must be at least minTeacherLevel in this perk
+    local minLevel = (Apprenticeship.sandboxSettings and Apprenticeship.sandboxSettings.minTeacherLevel)
+        or (SandboxVars and SandboxVars.Apprenticeship and SandboxVars.Apprenticeship.minTeacherLevel)
+        or 0
+    if teacher.getPerkLevel and teacher:getPerkLevel(perk) < minLevel then
+      print("Skipping " .. perk:getName() .. " because teacher level is below minimum")
+      return
+    end
 
 
     if teacher:HasTrait("classDismissed") then
@@ -87,14 +96,14 @@ local function AddXP(character, perk, level)
       return;
     end
 
-    for i=0, array_size-1, 1 do
+    for i = 0, array_size - 1, 1 do
       local onlinePlayer = players:get(i);
 
       if onlinePlayer:getDisplayName() ~= teacher:getDisplayName() then
-        local distance = math.sqrt((teacher:getX() - onlinePlayer:getX())^2) + ((teacher:getY() - onlinePlayer:getY())^2);
+        local distance = math.sqrt((teacher:getX() - onlinePlayer:getX()) ^ 2) +
+        ((teacher:getY() - onlinePlayer:getY()) ^ 2);
 
         if distance <= Apprenticeship.sandboxSettings.maxDistance then
-
           local args = {
             target = onlinePlayer:getOnlineID(),
             teacher = teacher:getOnlineID(),
@@ -123,12 +132,12 @@ local function AddXP(character, perk, level)
 
           --- send the TeachPerk command to the server
           sendClientCommand("MyMod", "AddXP", args)
-          
+
           if Apprenticeship.sandboxSettings.hideTeacherHaloText == false then
             teacher:setHaloNote("Teaching " .. onlinePlayer:getDisplayName() .. " " .. "(" .. perk:getName() .. ")");
           end
         end
-      end  
+      end
     end
   end
 end
@@ -137,29 +146,30 @@ end
 --- more client stuff!
 local function handleServerCommand(module, command, args)
   if module == "MyMod" and command == "AddXP" then
-      local target = getPlayerByOnlineID(args.target)
-      local teacher = getPlayerByOnlineID(args.teacher)
-      local perk = Perks[args.perk]
+    local target = getPlayerByOnlineID(args.target)
+    local teacher = getPlayerByOnlineID(args.teacher)
+    local perk = Perks[args.perk]
 
-      if target:HasTrait("dunce") then
-        print("Skipping " .. perk:getName() .. " because target has dunce");
-        return;
-      end
+    if target:HasTrait("dunce") then
+      print("Skipping " .. perk:getName() .. " because target has dunce");
+      return;
+    end
 
-      if target:getXp():getPerkBoost(perk) ~= 0 then
-        local bodydamage = target:getBodyDamage();
-        local boredom = bodydamage:getBoredomLevel();
+    if target:getXp():getPerkBoost(perk) ~= 0 then
+      local bodydamage = target:getBodyDamage();
+      local boredom = bodydamage:getBoredomLevel();
 
-        bodydamage:setBoredomLevel(boredom - Apprenticeship.sandboxSettings.studentBoredomReduction);
+      bodydamage:setBoredomLevel(boredom - Apprenticeship.sandboxSettings.studentBoredomReduction);
 
-        print(target:getDisplayName() .. " is less bored because they have a passion for " .. perk:getName());
-      end
+      print(target:getDisplayName() .. " is less bored because they have a passion for " .. perk:getName());
+    end
 
-      if Apprenticeship.sandboxSettings.hideStudentHaloText == false then
-        target:setHaloNote("Learning from " .. teacher:getDisplayName() .. " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")");
-      end
+    if Apprenticeship.sandboxSettings.hideStudentHaloText == false then
+      target:setHaloNote("Learning from " ..
+      teacher:getDisplayName() .. " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")");
+    end
 
-      target:getXp():AddXP(perk, args.amount, false, true, true)
+    target:getXp():AddXP(perk, args.amount, false, true, true)
   end
 end
 
