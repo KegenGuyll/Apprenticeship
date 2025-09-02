@@ -14,10 +14,6 @@ Events.OnGameStart.Add(function()
   })
 end)
 
-
-
-
-
 local function isPerkDisabled(perk)
   local searchString = "disableTeaching" .. perk:getId();
   local perkParent = perk:getParent():getName();
@@ -114,6 +110,8 @@ local function AddXP(character, perk, level)
           local args = {
             target = onlinePlayer:getOnlineID(),
             teacher = teacher:getOnlineID(),
+            teacherTrait = "",
+            teacherTraitReadable = "",
             perk = perk:getId(),
             -- default amount is 1/5 of the level
             amount = level / Apprenticeship.sandboxSettings.defaultTeachingAmount
@@ -123,17 +121,23 @@ local function AddXP(character, perk, level)
             print("savant trait found")
             if teacher:getXp():getPerkBoost(perk) ~= 0 then
               print("boosted " .. perk:getName() .. " because of savant");
+              args.teacherTrait = "savant";
+              args.teacherTraitReadable = "Savant";
               args.amount = level / Apprenticeship.sandboxSettings.savantTraitGain;
             end
           end
 
           if teacher:HasTrait("professor") then
             print("professor trait found")
+            args.teacherTrait = "professor";
+            args.teacherTraitReadable = "Professor";
             args.amount = level / Apprenticeship.sandboxSettings.professorTraitGain;
           end
 
           if teacher:HasTrait("badTeacher") then
             print("badTeacher trait found")
+            args.teacherTrait = "badTeacher";
+            args.teacherTraitReadable = "Bad Teacher";
             args.amount = level / Apprenticeship.sandboxSettings.badTeacherTraitGain;
           end
 
@@ -175,9 +179,13 @@ local function handleServerCommand(module, command, args)
     end
 
     if Apprenticeship.sandboxSettings.hideStudentHaloText == false then
+      local traitStr = args.teacherTraitReadable and (" (" .. args.teacherTraitReadable .. ")") or ""
       local fullText = "Learning from " ..
-          teacher:getDisplayName() .. " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")";
-      TextAPI.ShowOverheadText(target, fullText)
+          teacher:getDisplayName() ..
+          traitStr ..
+          " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")";
+
+      TextAPI.ShowOverheadText(target, fullText);
     end
 
     target:getXp():AddXP(perk, args.amount, false, true, true)
