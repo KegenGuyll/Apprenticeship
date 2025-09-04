@@ -5,7 +5,8 @@
     "sendClientCommand"
   ],
   "Lua.workspace.library": [
-    "C:/Users/Kegen/AppData/Roaming/Code/User/globalStorage/sumneko.lua/addonManager/addons/umbrella/module/library"
+    "C:/Users/Kegen/AppData/Roaming/Code/User/globalStorage/sumneko.lua/addonManager/addons/umbrella/module/library",
+    "C:/Users/Kegen/Documents/Projects/project-zomboid-modding/text-api"
   ],
   "Lua.runtime.version": "Lua 5.1",
   "Lua.runtime.path": [

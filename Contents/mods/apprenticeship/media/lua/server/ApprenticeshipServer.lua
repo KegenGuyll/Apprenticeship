@@ -5,6 +5,7 @@ Apprenticeship.sandboxSettings = {};
 
 Apprenticeship.server.fetchSandboxVars = function()
   Apprenticeship.sandboxSettings.maxDistance = SandboxVars.Apprenticeship.maxDistance;
+  Apprenticeship.sandboxSettings.minTeacherLevel = SandboxVars.Apprenticeship.minTeacherLevel;
   Apprenticeship.sandboxSettings.disableTeachingAgility = SandboxVars.Apprenticeship.disableTeachingAgility;
   Apprenticeship.sandboxSettings.disableTeachingAiming = SandboxVars.Apprenticeship.disableTeachingAiming;
   Apprenticeship.sandboxSettings.disableTeachingAxe = SandboxVars.Apprenticeship.disableTeachingAxe;

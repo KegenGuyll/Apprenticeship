@@ -4,6 +4,9 @@ Sandbox_EN = {
   Sandbox_Apprenticeship_maxDistance = "Max Distance",
   Sandbox_Apprenticeship_maxDistance_tooltip = "Distance away from player to be able to learn",
 
+  Sandbox_Apprenticeship_minTeacherLevel = "Minimum Teacher Level",
+  Sandbox_Apprenticeship_minTeacherLevel_tooltip = "Teachers must be at least this skill level in the perk they are teaching",
+
   Sandbox_Apprenticeship_disableTeachingAiming = "Disable Teaching Aiming skill",
   Sandbox_Apprenticeship_disableTeachingAiming_tooltip = "Players won't be able to teach Aiming skill",
 

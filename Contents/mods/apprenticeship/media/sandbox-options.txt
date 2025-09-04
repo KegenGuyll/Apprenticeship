@@ -361,3 +361,13 @@ option Apprenticeship.disableTeachingPlantScavenging
 	page = Apprenticeship,
 	translation = Apprenticeship_disableTeachingPlantScavenging,
 }
+
+option Apprenticeship.minTeacherLevel
+{
+	type = integer,
+	min = 0,
+	max = 10,
+	default = 0,
+	page = Apprenticeship,
+	translation = Apprenticeship_minTeacherLevel,
+}
