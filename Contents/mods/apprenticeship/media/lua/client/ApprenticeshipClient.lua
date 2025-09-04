@@ -210,10 +210,16 @@ local function handleServerCommand(module, command, args)
     -- Calculate potential "Breakthrough" bonus XP on the student side
     local finalAmount = args.amount
     local haloPrefix = nil
+    local doesStudentHaveTrait = target:HasTrait("advancedInsight")
 
     local sb = Apprenticeship.sandboxSettings or {}
     local breakthroughsEnabled = sb.enableBreakthroughs == true
-    local chanceN = sb.breakthroughsChanceN or 1000
+    local chanceN
+    if doesStudentHaveTrait then
+      chanceN = sb.advancedInsightBreakthroughsChanceN or sb.breakthroughsChanceN or 1000
+    else
+      chanceN = sb.breakthroughsChanceN or 1000
+    end
 
     -- Use ZombRand if available for consistency with PZ, fallback to math.random
     local function rollBreakthrough(n)

@@ -132,6 +132,10 @@ Sandbox_EN = {
 
   Sandbox_Apprenticeship_breakthroughsPerLevelBonus = "Breakthrough Per-Level Bonus",
   Sandbox_Apprenticeship_breakthroughsPerLevelBonus_tooltip = "Scales the teacher-level component of the breakthrough bonus.",
+
+  Sandbox_Apprenticeship_AdvancedInsight_breakthroughsChanceN  = "Breakthrough Chance for Advanced Insight",
+  Sandbox_Apprenticeship_AdvancedInsight_breakthroughsChanceN_tooltip = "A lower number increases the chance. Example: 1000 means a 1/1000 chance per teaching event."
 }
 
 
+  

@@ -54,6 +54,8 @@ Apprenticeship.server.fetchSandboxVars = function()
   Apprenticeship.sandboxSettings.breakthroughsChanceN = SandboxVars.Apprenticeship.breakthroughsChanceN;
   Apprenticeship.sandboxSettings.breakthroughsBaseMultiplier = SandboxVars.Apprenticeship.breakthroughsBaseMultiplier;
   Apprenticeship.sandboxSettings.breakthroughsPerLevelBonus = SandboxVars.Apprenticeship.breakthroughsPerLevelBonus;
+  Apprenticeship.sandboxSettings.advancedInsightBreakthroughsChanceN = SandboxVars.Apprenticeship
+  .advancedInsightBreakthroughsChanceN;
 end
 
 Apprenticeship.server.setup = function()
