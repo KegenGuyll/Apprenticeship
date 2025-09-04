@@ -242,7 +242,7 @@ local function handleServerCommand(module, command, args)
       local baseText = "Learning from " .. teacher:getDisplayName() .. " " .. roundNumber(finalAmount) .. " XP " ..
           "(" .. perk:getName() .. ")"
       local fullText = (haloPrefix and (haloPrefix .. "— ") or "") .. baseText
-      target:setHaloNote(fullText)
+      TextAPI.ShowOverheadText(target, fullText)
     end
 
     target:getXp():AddXP(perk, finalAmount, false, true, true)
