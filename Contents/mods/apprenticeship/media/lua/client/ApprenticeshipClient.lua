@@ -236,13 +236,20 @@ local function handleServerCommand(module, command, args)
       local bonus = CalculateMentalBreakthroughXP(finalAmount, studentLevel, teacherLevel, constants)
       finalAmount = finalAmount + bonus
       haloPrefix = "BREAKTHROUGH! +" .. roundNumber(bonus) .. " XP "
+      -- Show gold text from breakthrough
+      TextAPI.ShowOverheadText(target, haloPrefix .. "from learning " .. perk:getName() .. "!", {
+        color = { 255, 215, 0, 1 }
+      })
     end
 
     if Apprenticeship.sandboxSettings.hideStudentHaloText == false then
-      local baseText = "Learning from " .. teacher:getDisplayName() .. " " .. roundNumber(finalAmount) .. " XP " ..
-          "(" .. perk:getName() .. ")"
-      local fullText = (haloPrefix and (haloPrefix .. "— ") or "") .. baseText
-      TextAPI.ShowOverheadText(target, fullText)
+      local traitStr = args.teacherTraitReadable and (" (" .. args.teacherTraitReadable .. ")") or ""
+      local fullText = "Learning from " ..
+          teacher:getDisplayName() ..
+          traitStr ..
+          " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")";
+
+      TextAPI.ShowOverheadText(target, fullText);
     end
 
     target:getXp():AddXP(perk, finalAmount, false, true, true)
