@@ -371,3 +371,13 @@ option Apprenticeship.minTeacherLevel
 	page = Apprenticeship,
 	translation = Apprenticeship_minTeacherLevel,
 }
+
+option Apprenticeship.advancedInsightBreakthroughsChanceN
+{
+	type = integer,
+	min = 1,
+	max = 100000,
+	default = 500,
+	page = Apprenticeship,
+	translation = Apprenticeship_advancedInsightBreakthroughsChanceN,
+}
