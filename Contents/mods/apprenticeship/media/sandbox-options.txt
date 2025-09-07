@@ -60,6 +60,44 @@ option Apprenticeship.badTeacherTraitGain
 	translation = Apprenticeship_badTeacherTraitGain,
 }
 
+option Apprenticeship.enableBreakthroughs
+{
+	type = boolean,
+	default = true,
+	page = Apprenticeship,
+	translation = Apprenticeship_enableBreakthroughs,
+}
+
+option Apprenticeship.breakthroughsChanceN
+{
+	type = integer,
+	min = 1,
+	max = 100000,
+	default = 1000,
+	page = Apprenticeship,
+	translation = Apprenticeship_breakthroughsChanceN,
+}
+
+option Apprenticeship.breakthroughsBaseMultiplier
+{
+	type = double,
+	min = 0.0,
+	max = 100.0,
+	default = 1.0,
+	page = Apprenticeship,
+	translation = Apprenticeship_breakthroughsBaseMultiplier,
+}
+
+option Apprenticeship.breakthroughsPerLevelBonus
+{
+	type = double,
+	min = 0.0,
+	max = 100.0,
+	default = 1.0,
+	page = Apprenticeship,
+	translation = Apprenticeship_breakthroughsPerLevelBonus,
+}
+
 option Apprenticeship.hideTeacherHaloText
 {
 	type = boolean,
@@ -332,4 +370,14 @@ option Apprenticeship.minTeacherLevel
 	default = 0,
 	page = Apprenticeship,
 	translation = Apprenticeship_minTeacherLevel,
+}
+
+option Apprenticeship.advancedInsightBreakthroughsChanceN
+{
+	type = integer,
+	min = 1,
+	max = 100000,
+	default = 500,
+	page = Apprenticeship,
+	translation = Apprenticeship_advancedInsightBreakthroughsChanceN,
 }

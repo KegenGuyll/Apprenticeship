@@ -48,6 +48,14 @@ Apprenticeship.server.fetchSandboxVars = function()
   Apprenticeship.sandboxSettings.badTeacherTraitGain = SandboxVars.Apprenticeship.badTeacherTraitGain;
   Apprenticeship.sandboxSettings.defaultTeachingAmount = SandboxVars.Apprenticeship.defaultTeachingAmount;
   Apprenticeship.sandboxSettings.studentBoredomReduction = SandboxVars.Apprenticeship.studentBoredomReduction;
+
+  -- Breakthroughs feature
+  Apprenticeship.sandboxSettings.enableBreakthroughs = SandboxVars.Apprenticeship.enableBreakthroughs;
+  Apprenticeship.sandboxSettings.breakthroughsChanceN = SandboxVars.Apprenticeship.breakthroughsChanceN;
+  Apprenticeship.sandboxSettings.breakthroughsBaseMultiplier = SandboxVars.Apprenticeship.breakthroughsBaseMultiplier;
+  Apprenticeship.sandboxSettings.breakthroughsPerLevelBonus = SandboxVars.Apprenticeship.breakthroughsPerLevelBonus;
+  Apprenticeship.sandboxSettings.advancedInsightBreakthroughsChanceN = SandboxVars.Apprenticeship
+      .advancedInsightBreakthroughsChanceN;
 end
 
 Apprenticeship.server.setup = function()
@@ -58,10 +66,10 @@ end
 --- server file
 local function handleClientCommand(module, command, player, args)
   -- make sure we only do stuff if it's actually our command
-  if module == "MyMod" and command == "AddXP" then
+  if module == "Apprenticeship" and command == "AddXP" then
     local target = getPlayerByOnlineID(args.target)
     -- the target argument sends the command to only that client
-    sendServerCommand(target, "MyMod", "AddXP", args)
+    sendServerCommand(target, "Apprenticeship", "AddXP", args)
   end
 end
 -- triggered when the server receives a command from a client

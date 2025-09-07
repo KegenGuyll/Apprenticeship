@@ -67,6 +67,26 @@ local function roundNumber(num)
   end
 end
 
+local function CalculateMentalBreakthroughXP(baseXp, studentLevel, teacherLevel, constants)
+  -- New formula:
+  -- (baseXp * baseMult) + ((targetLevel * (MIN(targetLevelStudent, plateauLevel) / 10)) * perLevelBonus)
+  -- Where plateauLevel == targetLevel
+
+  local baseMult = (constants and constants.baseMult) or 1.0
+  local perLevelBonus = (constants and constants.perLevelBonus) or 1.0
+
+  local targetLevel = teacherLevel
+  local plateauLevel = targetLevel -- Same as targetLevel per requirement
+  local targetLevelStudent = studentLevel
+
+  -- effectiveLevel will cause the xp to plateau at this level
+  local effectiveLevel = math.min(targetLevelStudent, plateauLevel)
+
+  local result = (baseXp * baseMult) + ((targetLevel * (effectiveLevel / 10)) * perLevelBonus)
+
+  return result
+end
+
 local function AddXP(character, perk, level)
   local players    = getOnlinePlayers();
   local array_size = players:size();
@@ -78,7 +98,6 @@ local function AddXP(character, perk, level)
     print("Skipping " .. perk:getName() .. " because it's disabled");
     return;
   end
-
 
   for i = 0, array_size - 1, 1 do
     local onlinePlayer = players:get(i);
@@ -111,8 +130,10 @@ local function AddXP(character, perk, level)
       local onlinePlayer = players:get(i);
 
       if onlinePlayer:getDisplayName() ~= teacher:getDisplayName() then
-        local distance = math.sqrt((teacher:getX() - onlinePlayer:getX()) ^ 2) +
-            ((teacher:getY() - onlinePlayer:getY()) ^ 2);
+        -- Correct Euclidean distance (sqrt(dx^2 + dy^2))
+        local dx = teacher:getX() - onlinePlayer:getX();
+        local dy = teacher:getY() - onlinePlayer:getY();
+        local distance = math.sqrt(dx * dx + dy * dy);
 
         if distance <= Apprenticeship.sandboxSettings.maxDistance then
           local args = {
@@ -150,7 +171,7 @@ local function AddXP(character, perk, level)
           end
 
           --- send the TeachPerk command to the server
-          sendClientCommand("MyMod", "AddXP", args)
+          sendClientCommand("Apprenticeship", "AddXP", args)
 
           if Apprenticeship.sandboxSettings.hideTeacherHaloText == false then
             local fullText = "Teaching " ..
@@ -167,7 +188,7 @@ end
 
 --- more client stuff!
 local function handleServerCommand(module, command, args)
-  if module == "MyMod" and command == "AddXP" then
+  if module == "Apprenticeship" and command == "AddXP" then
     local target = getPlayerByOnlineID(args.target)
     local teacher = getPlayerByOnlineID(args.teacher)
     local perk = Perks[args.perk]
@@ -186,6 +207,47 @@ local function handleServerCommand(module, command, args)
       print(target:getDisplayName() .. " is less bored because they have a passion for " .. perk:getName());
     end
 
+    -- Calculate potential "Breakthrough" bonus XP on the student side
+    local finalAmount = args.amount
+    local haloPrefix = nil
+    local doesStudentHaveTrait = target:HasTrait("advancedInsight")
+
+    local sb = Apprenticeship.sandboxSettings or {}
+    local breakthroughsEnabled = sb.enableBreakthroughs == true
+    local chanceN
+    if doesStudentHaveTrait then
+      chanceN = sb.advancedInsightBreakthroughsChanceN or sb.breakthroughsChanceN or 1000
+    else
+      chanceN = sb.breakthroughsChanceN or 1000
+    end
+
+    -- Use ZombRand if available for consistency with PZ, fallback to math.random
+    local function rollBreakthrough(n)
+      if ZombRand ~= nil then
+        return ZombRand(n) == 0
+      else
+        return math.random(0, n - 1) == 0
+      end
+    end
+
+    if breakthroughsEnabled and chanceN and chanceN > 0 and rollBreakthrough(chanceN) then
+      local studentLevel = target:getPerkLevel(perk)
+      local teacherLevel = teacher and teacher:getPerkLevel(perk) or 0
+      local constants = {
+        -- base multiplier applied to the base XP amount
+        baseMult = sb.breakthroughsBaseMultiplier or 1.0,
+        -- per-level bonus applied to the teacher level scaled by min(student, teacher)
+        perLevelBonus = sb.breakthroughsPerLevelBonus or 1.0
+      }
+      local bonus = CalculateMentalBreakthroughXP(finalAmount, studentLevel, teacherLevel, constants)
+      finalAmount = finalAmount + bonus
+      haloPrefix = "BREAKTHROUGH! +" .. roundNumber(bonus) .. " XP "
+      -- Show gold text from breakthrough
+      TextAPI.ShowOverheadText(target, haloPrefix .. "from learning " .. perk:getName() .. "!", {
+        color = { 255, 215, 0, 1 }
+      })
+    end
+
     if Apprenticeship.sandboxSettings.hideStudentHaloText == false then
       local traitStr = args.teacherTraitReadable and (" (" .. args.teacherTraitReadable .. ")") or ""
       local fullText = "Learning from " ..
@@ -196,7 +258,7 @@ local function handleServerCommand(module, command, args)
       TextAPI.ShowOverheadText(target, fullText);
     end
 
-    target:getXp():AddXP(perk, args.amount, false, true, true)
+    target:getXp():AddXP(perk, finalAmount, false, true, true)
   end
 end
 

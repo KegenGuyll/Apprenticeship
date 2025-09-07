@@ -120,6 +120,19 @@ Sandbox_EN = {
 
   Sandbox_Apprenticeship_studentBoredomReduction = "Student Boredom Reduction Amount",
   Sandbox_Apprenticeship_studentBoredomReduction_tooltip = "The amount of boredom a student will lose when learning a skill with a passive (boost multiplier)",
+
+  Sandbox_Apprenticeship_enableBreakthroughs = "Enable Breakthroughs",
+  Sandbox_Apprenticeship_enableBreakthroughs_tooltip = "Enables rare Breakthrough events that grant bonus XP to students.",
+
+  Sandbox_Apprenticeship_breakthroughsChanceN = "Breakthrough Chance (1 in N)",
+  Sandbox_Apprenticeship_breakthroughsChanceN_tooltip = "A lower number increases the chance. Example: 1000 means a 1/1000 chance per teaching event.",
+
+  Sandbox_Apprenticeship_breakthroughsBaseMultiplier = "Breakthrough Base Multiplier",
+  Sandbox_Apprenticeship_breakthroughsBaseMultiplier_tooltip = "Bonus XP = (base XP * base multiplier) + (teacher level * min(student, teacher)/10 * per-level bonus)",
+
+  Sandbox_Apprenticeship_breakthroughsPerLevelBonus = "Breakthrough Per-Level Bonus",
+  Sandbox_Apprenticeship_breakthroughsPerLevelBonus_tooltip = "Scales the teacher-level component of the breakthrough bonus.",
+
+  Sandbox_Apprenticeship_AdvancedInsight_breakthroughsChanceN  = "Breakthrough Chance for Advanced Insight",
+  Sandbox_Apprenticeship_AdvancedInsight_breakthroughsChanceN_tooltip = "A lower number increases the chance. Example: 1000 means a 1/1000 chance per teaching event."
 }
-
-

@@ -9,4 +9,6 @@ UI_EN = {
   UI_trait_classDismisseddesc = "Whether out of frustration or an air of secrecy, you won’t teach anybody anything. <br>Other players can't learn skills from this character.",
   UI_trait_dunce = "Dunce",
   UI_trait_duncedesc = "You are unable to learn new things.",
+  UI_trait_advancedInsight = "Advanced Insight",
+  UI_trait_advancedInsightdesc = "You have a deep understanding of complex concepts. Increase the chance of having a mental breakthrough when learning."
 }
