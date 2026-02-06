@@ -23,11 +23,11 @@ Apprenticeship transforms the multiplayer experience in Project Zomboid by allow
 Five new traits modify teaching and learning effectiveness:
 
 **Positive Traits:**
-- **Savant** (+1 point): Enhanced teaching for boosted skills - Students gain 3x more XP when learning your specialty
-- **Professor** (+3 points): Master educator - Students gain 3x more XP when learning any skill from you
+- **Savant** (+1 point): Enhanced teaching for boosted skills - Students gain ~67% more XP when learning your specialty (33% vs 20% of your XP)
+- **Professor** (+3 points): Master educator - Students gain ~67% more XP when learning any skill from you (33% vs 20% of your XP)
 
 **Negative Traits:**
-- **Bad Teacher** (-1 point): Poor instruction - Students only gain 1/8th normal XP from you
+- **Bad Teacher** (-1 point): Poor instruction - Students gain 38% less XP from you (12.5% vs 20% of your XP)
 - **Class Dismissed** (-3 points): You refuse to teach anyone anything - No teaching capability
 - **Dunce** (-4 points): Cannot learn from others - Blocks all XP gain from the apprenticeship system
 
@@ -62,11 +62,15 @@ Server administrators have granular control through sandbox options:
 
 Base formula: `Student XP = Teacher XP Gain ÷ Teaching Amount`
 
-Modified by:
-- **Savant trait**: Divides by 3 instead of default (for boosted skills only)
-- **Professor trait**: Divides by 3 instead of default (all skills)
-- **Bad Teacher trait**: Divides by 8 instead of default
-- **Student with matching passion**: Reduces boredom by configurable amount
+Default Teaching Amount: 5 (students receive 20% of teacher's XP gain)
+
+Modified by teacher traits:
+- **Savant trait**: Teaching Amount = 3 (students receive 33% of XP for boosted skills only)
+- **Professor trait**: Teaching Amount = 3 (students receive 33% of XP for all skills)
+- **Bad Teacher trait**: Teaching Amount = 8 (students receive 12.5% of XP)
+
+Additional effects:
+- **Student with matching passion**: Reduces boredom by configurable amount (default: 10)
 
 ## Installation
 
