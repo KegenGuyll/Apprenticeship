@@ -23,11 +23,11 @@ Apprenticeship transforms the multiplayer experience in Project Zomboid by allow
 Five new traits modify teaching and learning effectiveness:
 
 **Positive Traits:**
-- **Savant** (+1 point): Enhanced teaching for boosted skills - Students gain ~67% more XP when learning your specialty (33% vs 20% of your XP)
-- **Professor** (+3 points): Master educator - Students gain ~67% more XP when learning any skill from you (33% vs 20% of your XP)
+- **Savant** (+1 point): Enhanced teaching for boosted skills - Students gain 33% of your XP (vs base 20%) when learning your specialty
+- **Professor** (+3 points): Master educator - Students gain 33% of your XP (vs base 20%) when learning any skill from you
 
 **Negative Traits:**
-- **Bad Teacher** (-1 point): Poor instruction - Students gain 38% less XP from you (12.5% vs 20% of your XP)
+- **Bad Teacher** (-1 point): Poor instruction - Students gain only 12.5% of your XP (vs base 20%)
 - **Class Dismissed** (-3 points): You refuse to teach anyone anything - No teaching capability
 - **Dunce** (-4 points): Cannot learn from others - Blocks all XP gain from the apprenticeship system
 
