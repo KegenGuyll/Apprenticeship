@@ -1,4 +1,5 @@
 require "ISPlayerStatsUI.lua"
+require('APP_options');
 
 local function  isPerkDisabled(perk)
   local searchString = "disableTeaching" .. perk:getId();
@@ -57,6 +58,8 @@ local function AddXP(character, perk, level)
   local players = getOnlinePlayers();
   local array_size 	= players:size();
   local teacher = nil;
+  local teacherOnlineId = character:getOnlineID();
+  local traitIds = APP_OPTIONS.traitIds;
 
   local shouldSkip = isPerkDisabled(perk);
 
@@ -68,7 +71,7 @@ local function AddXP(character, perk, level)
   for i=0, array_size-1, 1 do
     local onlinePlayer = players:get(i);
 
-    if onlinePlayer:getDisplayName() == character:getDisplayName() then
+    if onlinePlayer:getOnlineID() == teacherOnlineId then
       teacher = onlinePlayer;
       break;
     end
@@ -77,12 +80,12 @@ local function AddXP(character, perk, level)
   if teacher ~= nil then
 
 
-    if teacher:HasTrait("classDismissed") then
+    if teacher:HasTrait(traitIds.classDismissed) then
       print("Skipping " .. perk:getName() .. " because teacher has classDismissed");
       return;
     end
 
-    if teacher:HasTrait("dunce") then
+    if teacher:HasTrait(traitIds.dunce) then
       print("Skipping " .. perk:getName() .. " because teacher has dunce");
       return;
     end
@@ -90,8 +93,8 @@ local function AddXP(character, perk, level)
     for i=0, array_size-1, 1 do
       local onlinePlayer = players:get(i);
 
-      if onlinePlayer:getDisplayName() ~= teacher:getDisplayName() then
-        local distance = math.sqrt((teacher:getX() - onlinePlayer:getX())^2) + ((teacher:getY() - onlinePlayer:getY())^2);
+      if onlinePlayer:getOnlineID() ~= teacherOnlineId then
+        local distance = math.sqrt((teacher:getX() - onlinePlayer:getX())^2 + (teacher:getY() - onlinePlayer:getY())^2);
 
         if distance <= Apprenticeship.sandboxSettings.maxDistance then
 
@@ -103,7 +106,7 @@ local function AddXP(character, perk, level)
             amount = level / Apprenticeship.sandboxSettings.defaultTeachingAmount
           }
 
-          if teacher:HasTrait("savant") then
+          if teacher:HasTrait(traitIds.savant) then
             print("savant trait found")
             if teacher:getXp():getPerkBoost(perk) ~= 0 then
               print("boosted " .. perk:getName() .. " because of savant");
@@ -111,18 +114,18 @@ local function AddXP(character, perk, level)
             end
           end
 
-          if teacher:HasTrait("professor") then
+          if teacher:HasTrait(traitIds.professor) then
             print("professor trait found")
             args.amount = level / Apprenticeship.sandboxSettings.professorTraitGain;
           end
 
-          if teacher:HasTrait("badTeacher") then
+          if teacher:HasTrait(traitIds.badTeacher) then
             print("badTeacher trait found")
             args.amount = level / Apprenticeship.sandboxSettings.badTeacherTraitGain;
           end
 
           --- send the TeachPerk command to the server
-          sendClientCommand("MyMod", "AddXP", args)
+          sendClientCommand(APP_OPTIONS.moduleName, APP_OPTIONS.commandName, args)
           
           if Apprenticeship.sandboxSettings.hideTeacherHaloText == false then
             teacher:setHaloNote("Teaching " .. onlinePlayer:getDisplayName() .. " " .. "(" .. perk:getName() .. ")");
@@ -136,12 +139,17 @@ end
 
 --- more client stuff!
 local function handleServerCommand(module, command, args)
-  if module == "MyMod" and command == "AddXP" then
+  if module == APP_OPTIONS.moduleName and command == APP_OPTIONS.commandName then
       local target = getPlayerByOnlineID(args.target)
       local teacher = getPlayerByOnlineID(args.teacher)
       local perk = Perks[args.perk]
+      local traitIds = APP_OPTIONS.traitIds;
 
-      if target:HasTrait("dunce") then
+      if (not target) or (not teacher) or (not perk) then
+        return;
+      end
+
+      if target:HasTrait(traitIds.dunce) then
         print("Skipping " .. perk:getName() .. " because target has dunce");
         return;
       end
@@ -159,7 +167,7 @@ local function handleServerCommand(module, command, args)
         target:setHaloNote("Learning from " .. teacher:getDisplayName() .. " " .. roundNumber(args.amount) .. " XP " .. "(" .. perk:getName() .. ")");
       end
 
-      target:getXp():AddXP(perk, args.amount, false, true, true)
+      target:getXp():AddXP(perk, args.amount, false, true)
   end
 end
 

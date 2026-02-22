@@ -3,6 +3,8 @@ Apprenticeship.server = {};
 Apprenticeship.constants = {};
 Apprenticeship.sandboxSettings = {};
 
+require('APP_options');
+
 Apprenticeship.server.fetchSandboxVars = function ()
   Apprenticeship.sandboxSettings.maxDistance = SandboxVars.Apprenticeship.maxDistance;
   Apprenticeship.sandboxSettings.disableTeachingAgility = SandboxVars.Apprenticeship.disableTeachingAgility;
@@ -55,10 +57,13 @@ end
 --- server file
 local function handleClientCommand(module, command, player, args)
   -- make sure we only do stuff if it's actually our command
-  if module == "MyMod" and command == "AddXP" then
+  if module == APP_OPTIONS.moduleName and command == APP_OPTIONS.commandName then
       local target = getPlayerByOnlineID(args.target)
+      if not target then
+        return;
+      end
       -- the target argument sends the command to only that client
-      sendServerCommand(target, "MyMod", "AddXP", args)
+      sendServerCommand(target, APP_OPTIONS.moduleName, APP_OPTIONS.commandName, args)
   end
 end
 -- triggered when the server receives a command from a client

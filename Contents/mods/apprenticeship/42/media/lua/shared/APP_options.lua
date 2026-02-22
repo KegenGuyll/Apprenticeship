@@ -2,8 +2,15 @@ Apprenticeship = Apprenticeship or {};
 
 APP_OPTIONS = {
   maxDistance = 5,
-  moduleName = "TeachPerk",
+  moduleName = "Apprenticeship",
   commandName = "AddXP",
+  traitIds = {
+    savant = "apprenticeship:savant",
+    professor = "apprenticeship:professor",
+    badTeacher = "apprenticeship:badTeacher",
+    classDismissed = "apprenticeship:classDismissed",
+    dunce = "apprenticeship:dunce",
+  },
   sandboxSettings = {
     maxDistance = 5
   },
