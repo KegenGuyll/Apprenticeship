@@ -1,0 +1,5 @@
+CharacterTrait.register("apprenticeship:savant")
+CharacterTrait.register("apprenticeship:professor")
+CharacterTrait.register("apprenticeship:badTeacher")
+CharacterTrait.register("apprenticeship:classDismissed")
+CharacterTrait.register("apprenticeship:dunce")
